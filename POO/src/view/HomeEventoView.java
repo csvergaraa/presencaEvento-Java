@@ -16,9 +16,7 @@ public class HomeEventoView extends javax.swing.JFrame {
      */
     public HomeEventoView() {
         initComponents();
-        editEvent.setVisible(false);
-        deleteEvent.setVisible(false);
-//        eventsTable.setRowCount(10);
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -34,9 +32,10 @@ public class HomeEventoView extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         eventsTable = new javax.swing.JTable();
         Title = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        novoEvento = new javax.swing.JLabel();
         editEvent = new javax.swing.JLabel();
         deleteEvent = new javax.swing.JLabel();
+        voltar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(44, 62, 80));
@@ -60,9 +59,14 @@ public class HomeEventoView extends javax.swing.JFrame {
         Title.setForeground(new java.awt.Color(255, 255, 255));
         Title.setText("Eventos");
 
-        jLabel1.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(3, 218, 198));
-        jLabel1.setText("+ NOVO EVENTO");
+        novoEvento.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        novoEvento.setForeground(new java.awt.Color(3, 218, 198));
+        novoEvento.setText("+ NOVO EVENTO");
+        novoEvento.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                novoEventoMouseClicked(evt);
+            }
+        });
 
         editEvent.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         editEvent.setForeground(new java.awt.Color(3, 218, 198));
@@ -71,6 +75,15 @@ public class HomeEventoView extends javax.swing.JFrame {
         deleteEvent.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         deleteEvent.setForeground(new java.awt.Color(244, 67, 54));
         deleteEvent.setText("EXCLUIR");
+
+        voltar.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        voltar.setForeground(new java.awt.Color(244, 67, 54));
+        voltar.setText("VOLTAR");
+        voltar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                voltarMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -82,11 +95,14 @@ public class HomeEventoView extends javax.swing.JFrame {
                     .addComponent(Title)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(editEvent)
-                            .addGap(18, 18, 18)
+                            .addGap(4, 4, 4)
+                            .addComponent(voltar)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(deleteEvent)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel1))
+                            .addComponent(editEvent)
+                            .addGap(18, 18, 18)
+                            .addComponent(novoEvento))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
@@ -99,9 +115,10 @@ public class HomeEventoView extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
+                    .addComponent(novoEvento)
                     .addComponent(editEvent)
-                    .addComponent(deleteEvent))
+                    .addComponent(deleteEvent)
+                    .addComponent(voltar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -118,6 +135,18 @@ public class HomeEventoView extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void novoEventoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_novoEventoMouseClicked
+        FormularioEventoView form = new FormularioEventoView();
+        form.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_novoEventoMouseClicked
+
+    private void voltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_voltarMouseClicked
+        HomeProgramaView telaInicial = new HomeProgramaView();
+        telaInicial.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_voltarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -160,8 +189,9 @@ public class HomeEventoView extends javax.swing.JFrame {
     private javax.swing.JLabel deleteEvent;
     private javax.swing.JLabel editEvent;
     private javax.swing.JTable eventsTable;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel novoEvento;
+    private javax.swing.JLabel voltar;
     // End of variables declaration//GEN-END:variables
 }

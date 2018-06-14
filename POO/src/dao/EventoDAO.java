@@ -25,7 +25,6 @@ public class EventoDAO{
         String sql = "INSERT INTO EVENTO(nome, tipo, data, horaInicial, horaFinal) "
                 + "VALUES ('" + eventoVO.getNome() + "','" + eventoVO.getTipoEvento() + "','" 
                 + eventoVO.getData() + "','" + eventoVO.getHoraInicial() + "','" + eventoVO.getHoraFinal() + "');";
-        System.out.println(sql);
         Connection con = conexao.conectar();
         Statement sessao = con.createStatement();
 

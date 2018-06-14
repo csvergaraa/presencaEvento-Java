@@ -36,11 +36,11 @@ public class AlunoDAO{
     
     public void editarAluno()throws SQLException, Exception{
            
-        String sql = "UPDATE ALUNO "
-                + "SET nome = '" + alunoVO.getNome() + "', curso = '" + alunoVO.getCurso()
+        String sql = "UPDATE ALUNO SET nome = '" 
+                + alunoVO.getNome() + "', curso = '" + alunoVO.getCurso()
                 + "', periodo = " + alunoVO.getPeriodo() + ", turno = '" + alunoVO.getTurno()
                 + "', email = '" + alunoVO.getEmail() + "', telefone = '" + alunoVO.getTelefone()
-                + "WHERE ALUNO.RA = " + alunoVO.getRA();
+                + "' WHERE ALUNO.RA = " + alunoVO.getRA();
 
         Connection con = conexao.conectar();
         Statement sessao = con.createStatement();

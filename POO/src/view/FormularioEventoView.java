@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import controller.EventoControll;
@@ -11,19 +6,13 @@ import java.awt.HeadlessException;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author cesarvergara
- */
 public class FormularioEventoView extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Aplicacao
-     */
     public FormularioEventoView() {
         initComponents();
         this.setTitle("Cadastro de Evento");
-        
+        this.setLocationRelativeTo(null);
+
     }
         @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -32,20 +21,20 @@ public class FormularioEventoView extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         inputNome4 = new javax.swing.JTextField();
-        jPanel1 = new javax.swing.JPanel();
-        Title = new javax.swing.JLabel();
+        textData = new javax.swing.JPanel();
+        textEditar = new javax.swing.JLabel();
         deleteEvent = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        textNome = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        textHoraInicial = new javax.swing.JLabel();
+        textHoraFInal = new javax.swing.JLabel();
+        textTipoEvento = new javax.swing.JLabel();
         inputNome = new javax.swing.JTextField();
-        inputData = new javax.swing.JTextField();
-        inputHoraInicial = new javax.swing.JTextField();
-        inputHoraFinal = new javax.swing.JTextField();
         inputTipoEvento = new javax.swing.JComboBox<>();
-        salvarEvento = new javax.swing.JButton();
+        saveEvent = new javax.swing.JLabel();
+        inputData = new javax.swing.JFormattedTextField();
+        inputHoraInicial = new javax.swing.JFormattedTextField();
+        inputHoraFinal = new javax.swing.JFormattedTextField();
 
         jLabel3.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -68,58 +57,42 @@ public class FormularioEventoView extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(44, 62, 80));
 
-        jPanel1.setBackground(new java.awt.Color(44, 62, 80));
+        textData.setBackground(new java.awt.Color(44, 62, 80));
 
-        Title.setFont(new java.awt.Font("Open Sans", 1, 13)); // NOI18N
-        Title.setForeground(new java.awt.Color(255, 255, 255));
-        Title.setText("Editar Evento");
+        textEditar.setFont(new java.awt.Font("Open Sans", 1, 13)); // NOI18N
+        textEditar.setForeground(new java.awt.Color(255, 255, 255));
+        textEditar.setText("Editar Evento");
 
         deleteEvent.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         deleteEvent.setForeground(new java.awt.Color(244, 67, 54));
         deleteEvent.setText("CANCELAR");
+        deleteEvent.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deleteEventMouseClicked(evt);
+            }
+        });
 
-        jLabel2.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Nome:");
+        textNome.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
+        textNome.setForeground(new java.awt.Color(255, 255, 255));
+        textNome.setText("Nome:");
 
         jLabel4.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Data:");
 
-        jLabel5.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Hora Inicial:");
+        textHoraInicial.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
+        textHoraInicial.setForeground(new java.awt.Color(255, 255, 255));
+        textHoraInicial.setText("Hora Inicial:");
 
-        jLabel7.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Hora Final:");
+        textHoraFInal.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
+        textHoraFInal.setForeground(new java.awt.Color(255, 255, 255));
+        textHoraFInal.setText("Hora Final:");
 
-        jLabel8.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Tipo de Evento:");
+        textTipoEvento.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
+        textTipoEvento.setForeground(new java.awt.Color(255, 255, 255));
+        textTipoEvento.setText("Tipo de Evento:");
 
         inputNome.setBorder(null);
-
-        inputData.setBorder(null);
-        inputData.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inputDataActionPerformed(evt);
-            }
-        });
-
-        inputHoraInicial.setBorder(null);
-        inputHoraInicial.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inputHoraInicialActionPerformed(evt);
-            }
-        });
-
-        inputHoraFinal.setBorder(null);
-        inputHoraFinal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inputHoraFinalActionPerformed(evt);
-            }
-        });
 
         inputTipoEvento.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
         inputTipoEvento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Palestra", "Minicurso", "Mesa redonda", "Oficina" }));
@@ -129,107 +102,118 @@ public class FormularioEventoView extends javax.swing.JFrame {
             }
         });
 
-        salvarEvento.setBackground(new java.awt.Color(44, 62, 80));
-        salvarEvento.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        salvarEvento.setForeground(new java.awt.Color(0, 204, 204));
-        salvarEvento.setText("SALVAR EVENTO");
-        salvarEvento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                salvarEventoActionPerformed(evt);
+        saveEvent.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        saveEvent.setForeground(new java.awt.Color(3, 218, 198));
+        saveEvent.setText("SALVAR EVENTO");
+        saveEvent.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                saveEventMouseClicked(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        inputData.setBorder(null);
+        try {
+            inputData.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-##-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        inputData.setToolTipText("");
+
+        inputHoraInicial.setBorder(null);
+        try {
+            inputHoraInicial.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##:##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        inputHoraFinal.setBorder(null);
+        try {
+            inputHoraFinal.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##:##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        javax.swing.GroupLayout textDataLayout = new javax.swing.GroupLayout(textData);
+        textData.setLayout(textDataLayout);
+        textDataLayout.setHorizontalGroup(
+            textDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(textDataLayout.createSequentialGroup()
                 .addGap(12, 12, 12)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(inputHoraInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(inputData, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel2)
-                            .addComponent(inputNome, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(inputTipoEvento, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(textDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(textDataLayout.createSequentialGroup()
+                        .addGroup(textDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(textEditar)
+                            .addGroup(textDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(inputHoraInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(inputHoraFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 31, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(Title)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(deleteEvent)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(salvarEvento)))
-                        .addContainerGap())))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(textDataLayout.createSequentialGroup()
+                        .addGroup(textDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(textTipoEvento)
+                            .addComponent(textHoraFInal)
+                            .addComponent(textHoraInicial)
+                            .addComponent(jLabel4)
+                            .addComponent(textNome)
+                            .addGroup(textDataLayout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addGroup(textDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(inputTipoEvento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(inputData, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(inputNome, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, textDataLayout.createSequentialGroup()
+                        .addComponent(deleteEvent)
+                        .addGap(104, 104, 104)
+                        .addComponent(saveEvent)
+                        .addGap(21, 21, 21))))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        textDataLayout.setVerticalGroup(
+            textDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, textDataLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(Title)
+                .addComponent(textEditar)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel2)
+                .addComponent(textNome)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(inputNome, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(11, 11, 11)
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(inputData, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17)
+                .addComponent(textHoraInicial)
+                .addGap(18, 18, 18)
+                .addComponent(inputHoraInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(11, 11, 11)
+                .addComponent(textHoraFInal)
+                .addGap(17, 17, 17)
+                .addComponent(inputHoraFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(inputHoraInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(inputHoraFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel8)
+                .addComponent(textTipoEvento)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(inputTipoEvento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addGroup(textDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(deleteEvent)
-                    .addComponent(salvarEvento))
-                .addGap(12, 12, 12))
+                    .addComponent(saveEvent))
+                .addGap(17, 17, 17))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(textData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(textData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void inputDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputDataActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_inputDataActionPerformed
-
-    private void inputHoraInicialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputHoraInicialActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_inputHoraInicialActionPerformed
-
-    private void inputHoraFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputHoraFinalActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_inputHoraFinalActionPerformed
 
     private void inputNome4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputNome4ActionPerformed
         // TODO add your handling code here:
@@ -239,8 +223,8 @@ public class FormularioEventoView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_inputTipoEventoActionPerformed
 
-    private void salvarEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarEventoActionPerformed
-
+    private void saveEventMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveEventMouseClicked
+        
         try {            
             EventoControll eventoControl = new EventoControll();
             eventoControl.cadastrarEvento(this.inputNome.getText(), 
@@ -252,7 +236,7 @@ public class FormularioEventoView extends javax.swing.JFrame {
             //this.buscaAlunoView.buscarAlunos();
             
             JOptionPane.showMessageDialog(rootPane, "Cadastro realizado com sucesso!", "Cadastro Evento", JOptionPane.INFORMATION_MESSAGE);
-            
+           
             this.dispose();
             
         } catch (ValidacaoException validacaoException) {
@@ -264,8 +248,16 @@ public class FormularioEventoView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Erro ao efetuar o cadastro!", "Cadastro Evento", JOptionPane.ERROR_MESSAGE);
         
         }
+          HomeProgramaView form = new HomeProgramaView();
+          form.setVisible(true);
+          dispose();
+    }//GEN-LAST:event_saveEventMouseClicked
 
-    }//GEN-LAST:event_salvarEventoActionPerformed
+    private void deleteEventMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteEventMouseClicked
+        HomeEventoView form = new HomeEventoView();
+        form.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_deleteEventMouseClicked
 
     /**
      * @param args the command line arguments
@@ -306,22 +298,22 @@ public class FormularioEventoView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Title;
     private javax.swing.JLabel deleteEvent;
-    private javax.swing.JTextField inputData;
-    private javax.swing.JTextField inputHoraFinal;
-    private javax.swing.JTextField inputHoraInicial;
+    private javax.swing.JFormattedTextField inputData;
+    private javax.swing.JFormattedTextField inputHoraFinal;
+    private javax.swing.JFormattedTextField inputHoraInicial;
     private javax.swing.JTextField inputNome;
     private javax.swing.JTextField inputNome4;
     private javax.swing.JComboBox<String> inputTipoEvento;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JButton salvarEvento;
+    private javax.swing.JLabel saveEvent;
+    private javax.swing.JPanel textData;
+    private javax.swing.JLabel textEditar;
+    private javax.swing.JLabel textHoraFInal;
+    private javax.swing.JLabel textHoraInicial;
+    private javax.swing.JLabel textNome;
+    private javax.swing.JLabel textTipoEvento;
     // End of variables declaration//GEN-END:variables
 }

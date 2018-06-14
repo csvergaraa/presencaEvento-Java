@@ -3,9 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/lacomski/Documentos/Programação/2018/Programação%20Orientado%20a%20Objetos/POO/src/view/FormularioEventoView.java</file>
-            <file>file:/home/lacomski/Documentos/Programação/2018/Programação%20Orientado%20a%20Objetos/POO/src/dao/EventoDAO.java</file>
-            <file>file:/home/lacomski/Documentos/Programação/2018/Programação%20Orientado%20a%20Objetos/POO/src/dao/Conexao.java</file>
+            <file>file:/home/lacomski/Documentos/Programação/2018/Programação%20Orientado%20a%20Objetos/POO/src/dao/AlunoDAO.java</file>
+            <file>file:/home/lacomski/Documentos/Programação/2018/Programação%20Orientado%20a%20Objetos/POO/src/controller/AlunoControll.java</file>
+            <file>file:/home/lacomski/Documentos/Programação/2018/Programação%20Orientado%20a%20Objetos/POO/src/view/FormularioAlunoView.java</file>
         </group>
     </open-files>
 </project-private>
