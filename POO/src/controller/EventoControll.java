@@ -1,8 +1,10 @@
 package controller;
 
+import dao.AlunoDAO;
 import dao.EventoDAO;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import vo.AlunoVO;
 import vo.EventoVO;
 
 public class EventoControll {
@@ -53,6 +55,14 @@ public class EventoControll {
         eventoPers.excluirEvento();
     }
     
+     public ArrayList<EventoVO> buscar() throws SQLException, Exception {
+
+        EventoDAO eventoDao = new EventoDAO();
+        return eventoDao.buscar();
+    }
+    
+    
+    
     public ArrayList<EventoVO> buscarEvento(String nome) throws SQLException, Exception {
         
         EventoVO eventoVO = new EventoVO();
@@ -76,6 +86,8 @@ public class EventoControll {
             throw new ValidacaoException("Campo Hora Final é obrigatório");
         }
     }
+
+    
 }
  
     

@@ -248,7 +248,7 @@ public class FormularioEventoView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Erro ao efetuar o cadastro!", "Cadastro Evento", JOptionPane.ERROR_MESSAGE);
         
         }
-          HomeProgramaView form = new HomeProgramaView();
+          HomeEventoView form = new HomeEventoView();
           form.setVisible(true);
           dispose();
     }//GEN-LAST:event_saveEventMouseClicked
