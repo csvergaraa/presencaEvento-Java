@@ -327,13 +327,13 @@ public class HomeProgramaView extends javax.swing.JFrame {
     }//GEN-LAST:event_textCadastroAlunoMouseClicked
 
     private void painelEditAlunoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_painelEditAlunoMouseClicked
-        FormularioAlunoView form = new FormularioAlunoView();
+        HomeAlunoView form = new HomeAlunoView();
         form.setVisible(true);
         dispose();
     }//GEN-LAST:event_painelEditAlunoMouseClicked
 
     private void textEditAlunoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textEditAlunoMouseClicked
-        FormularioAlunoView form = new FormularioAlunoView();
+        HomeAlunoView form = new HomeAlunoView();
         form.setVisible(true);
         dispose();
     }//GEN-LAST:event_textEditAlunoMouseClicked

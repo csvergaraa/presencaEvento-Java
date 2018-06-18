@@ -12,7 +12,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import vo.AlunoVO;
 import vo.EventoVO;
 
 /**
@@ -233,7 +232,7 @@ public class HomeEventoView extends javax.swing.JFrame {
             String nome = this.inputBuscarEvento.getText();
             
             EventoControll eventoControl = new EventoControll();
-            ArrayList<EventoVO> eventos = eventoControl.buscarEvento(nome);
+            ArrayList<EventoVO> eventos = eventoControl.buscarNome(nome);
             
             this.popularTabelaEvento(eventos);
        
@@ -260,7 +259,7 @@ public class HomeEventoView extends javax.swing.JFrame {
             if (op == 0) {
 
                 EventoControll eventoControl = new EventoControll(eventoVO);
-                eventoControl.excluirEvento();
+                eventoControl.excluir();
 
                 JOptionPane.showMessageDialog(rootPane, "Evento excluído com sucesso!", "Exclusão de Evento", JOptionPane.INFORMATION_MESSAGE);
             }

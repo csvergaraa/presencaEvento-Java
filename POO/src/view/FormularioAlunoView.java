@@ -1,7 +1,6 @@
 package view;
 
 import controller.AlunoControll;
-import controller.EventoControll;
 import controller.ValidacaoException;
 import java.awt.HeadlessException;
 import java.sql.SQLException;
@@ -317,7 +316,7 @@ public class FormularioAlunoView extends javax.swing.JFrame {
       
         try {            
             AlunoControll alunoControl = new AlunoControll();
-            alunoControl.cadastrarAluno(this.inputRA.getText(),
+            alunoControl.cadastrar(this.inputRA.getText(),
                     this.inputNome.getText(),
                     this.inputCurso.getText(),
                     this.inputPeriodo.getSelectedItem().toString(),
@@ -329,6 +328,7 @@ public class FormularioAlunoView extends javax.swing.JFrame {
             
             JOptionPane.showMessageDialog(rootPane, "Cadastro realizado com sucesso!", "Cadastro Aluno", JOptionPane.INFORMATION_MESSAGE);
            
+            
             this.dispose();
             
         } catch (ValidacaoException validacaoException) {
@@ -340,13 +340,13 @@ public class FormularioAlunoView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Erro ao efetuar o cadastro!", "Cadastro Aluno", JOptionPane.ERROR_MESSAGE);
         
         }
-        HomeProgramaView form = new HomeProgramaView();
+        HomeAlunoView form = new HomeAlunoView();
         form.setVisible(true);
         dispose();
     }//GEN-LAST:event_saveAlunoMouseClicked
 
     private void cancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelarMouseClicked
-        HomeProgramaView form = new HomeProgramaView();
+        HomeAlunoView form = new HomeAlunoView();
         form.setVisible(true);
         dispose();
     }//GEN-LAST:event_cancelarMouseClicked
@@ -356,7 +356,7 @@ public class FormularioAlunoView extends javax.swing.JFrame {
         try {
             
             AlunoControll alunoControl = new AlunoControll();
-            alunoControl.editarAluno(this.inputRA.getText(), 
+            alunoControl.editar(this.inputRA.getText(), 
                     this.inputNome.getText(), 
                     this.inputCurso.getText(), 
                     this.inputPeriodo.getSelectedItem().toString(), 
@@ -379,7 +379,7 @@ public class FormularioAlunoView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Erro ao efetuar a edição!", "Editar Aluno", JOptionPane.ERROR_MESSAGE);
         
         }
-        HomeProgramaView form = new HomeProgramaView();
+        HomeAlunoView form = new HomeAlunoView();
         form.setVisible(true);
         dispose();
         

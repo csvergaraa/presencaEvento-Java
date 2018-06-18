@@ -4,12 +4,10 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import static java.time.Clock.system;
 import java.util.ArrayList;
-import vo.AlunoVO;
 import vo.EventoVO;
 
-public class EventoDAO{
+public class EventoDAO implements CrudDAO{
     private Conexao conexao;
     private EventoVO eventoVO;
     
@@ -22,7 +20,8 @@ public class EventoDAO{
         this.eventoVO = eventoVO;
     }
     
-    public void cadastrarEvento() throws ClassNotFoundException, SQLException{
+    @Override
+    public void cadastrar() throws ClassNotFoundException, SQLException{
         String sql = "INSERT INTO EVENTO(nome, tipo, data, horaInicial, horaFinal) "
                 + "VALUES ('" + eventoVO.getNome() + "','" + eventoVO.getTipoEvento() + "','" 
                 + eventoVO.getData() + "','" + eventoVO.getHoraInicial() + "','" + eventoVO.getHoraFinal() + "');";
@@ -34,7 +33,8 @@ public class EventoDAO{
         conexao.desconectar();
     }
     
-    public void editarEvento()throws SQLException, Exception{
+    @Override
+    public void editar()throws SQLException, Exception{
            
         String sql = "UPDATE EVENTO "
                 + "SET nome = '" + eventoVO.getNome() + "', tipoEvento = '" + eventoVO.getTipoEvento()
@@ -50,6 +50,7 @@ public class EventoDAO{
         conexao.desconectar();
     }
 
+    @Override
     public ArrayList buscar() throws SQLException, Exception {
        
         ArrayList<EventoVO> eventos = new ArrayList<>();
@@ -80,7 +81,8 @@ public class EventoDAO{
 
     
     
-    public ArrayList<EventoVO> buscarEvento() throws SQLException, Exception{
+    @Override
+    public ArrayList<EventoVO> buscarNome() throws SQLException, Exception{
      
         ArrayList<EventoVO> eventos = new ArrayList<>();
         String sql = "SELECT * FROM EVENTO WHERE EVENTO.nome like '%" + eventoVO.getNome() + "%'";
@@ -109,7 +111,8 @@ public class EventoDAO{
     }
     
     
-     public void excluirEvento() throws SQLException, Exception {
+    @Override
+     public void excluir() throws SQLException, Exception {
         String sql = "DELETE FROM EVENTO WHERE EVENTO.nome = '" + eventoVO.getNome() + "';";
         Connection con = conexao.conectar();
         Statement sessao = con.createStatement();

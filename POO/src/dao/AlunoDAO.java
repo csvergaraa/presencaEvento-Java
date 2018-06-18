@@ -7,7 +7,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import vo.AlunoVO;
 
-public class AlunoDAO{
+public class AlunoDAO implements CrudDAO{
     private Conexao conexao;
     private AlunoVO alunoVO;
     
@@ -20,7 +20,8 @@ public class AlunoDAO{
         this.alunoVO = alunoVO;
     }
     
-    public void cadastrarAluno() throws ClassNotFoundException, SQLException{
+    @Override
+    public void cadastrar() throws ClassNotFoundException, SQLException{
         String sql = "INSERT INTO ALUNO(RA, nome, curso, periodo, turno, email, telefone) "
                 + "VALUES (" + alunoVO.getRA() + ",'" + alunoVO.getNome() + "','" 
                 + alunoVO.getCurso() + "'," + alunoVO.getPeriodo() + ",'" + alunoVO.getTurno() 
@@ -34,7 +35,8 @@ public class AlunoDAO{
         conexao.desconectar();
     }
     
-    public void editarAluno()throws SQLException, Exception{
+    @Override
+    public void editar()throws SQLException, Exception{
            
         String sql = "UPDATE ALUNO SET nome = '" 
                 + alunoVO.getNome() + "', curso = '" + alunoVO.getCurso()
@@ -50,7 +52,39 @@ public class AlunoDAO{
         conexao.desconectar();
     }
 
-    public ArrayList<AlunoVO> buscarAluno() throws SQLException, Exception{
+    @Override
+    public ArrayList<AlunoVO> buscar() throws SQLException, Exception{
+        
+        ArrayList<AlunoVO> alunos = new ArrayList<>();
+        String sql = "SELECT * FROM ALUNO";
+        
+        Connection con = conexao.conectar();
+        Statement sessao = con.createStatement();
+        
+        ResultSet rs = sessao.executeQuery(sql);
+        
+        while(rs.next()) {
+            
+            AlunoVO alunoVO = new AlunoVO();
+            
+            alunoVO.setRA(rs.getInt("ra"));
+            alunoVO.setNome(rs.getString("nome"));
+            alunoVO.setCurso(rs.getString("curso"));
+            alunoVO.setPeriodo(rs.getInt("periodo"));
+            alunoVO.setTurno(rs.getString("turno"));
+            alunoVO.setEmail(rs.getString("email"));
+            alunoVO.setTelefone(rs.getString("telefone"));
+            alunos.add(alunoVO);
+        }
+        
+        conexao.desconectar();
+   
+        return alunos;        
+    }
+    
+    
+    @Override
+    public ArrayList<AlunoVO> buscarNome() throws SQLException, Exception{
      
         ArrayList<AlunoVO> alunos = new ArrayList<>();
         String sql = "SELECT * FROM ALUNO WHERE ALUNO.nome like '%" + alunoVO.getNome() + "%'";
@@ -80,7 +114,8 @@ public class AlunoDAO{
     }
     
     
-     public void excluirAluno() throws SQLException, Exception {
+    @Override
+     public void excluir() throws SQLException, Exception {
         String sql = "DELETE FROM aluno WHERE aluno.ra = " + alunoVO.getRA();
         Connection con = conexao.conectar();
         Statement sessao = con.createStatement();

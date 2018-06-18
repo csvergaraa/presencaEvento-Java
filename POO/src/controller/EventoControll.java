@@ -1,13 +1,11 @@
 package controller;
 
-import dao.AlunoDAO;
 import dao.EventoDAO;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import vo.AlunoVO;
 import vo.EventoVO;
 
-public class EventoControll {
+public class EventoControll implements CrudControll{
     private EventoVO eventoVO;
     
     public EventoControll(){
@@ -30,7 +28,7 @@ public class EventoControll {
         eventoVO.setHoraFinal(horaFinal);
         
         EventoDAO eventoDao = new EventoDAO(eventoVO);
-        eventoDao.cadastrarEvento();
+        eventoDao.cadastrar();
     }
     
     public void editarAluno(String nome, String tipoEvento, String data, String horaInicial, String horaFinal) throws ValidacaoException, SQLException, Exception {
@@ -46,15 +44,17 @@ public class EventoControll {
         eventoVO.setHoraFinal(horaFinal);
         
         EventoDAO eventoDao = new EventoDAO(eventoVO);
-        eventoDao.editarEvento();
+        eventoDao.editar();
     }
 
-    public void excluirEvento() throws SQLException, Exception {
+    @Override
+    public void excluir() throws SQLException, Exception {
 
         EventoDAO eventoPers = new EventoDAO(this.eventoVO);
-        eventoPers.excluirEvento();
+        eventoPers.excluir();
     }
     
+    @Override
      public ArrayList<EventoVO> buscar() throws SQLException, Exception {
 
         EventoDAO eventoDao = new EventoDAO();
@@ -63,13 +63,14 @@ public class EventoControll {
     
     
     
-    public ArrayList<EventoVO> buscarEvento(String nome) throws SQLException, Exception {
+    @Override
+    public ArrayList<EventoVO> buscarNome(String nome) throws SQLException, Exception {
         
         EventoVO eventoVO = new EventoVO();
         eventoVO.setNome(nome);
         
         EventoDAO eventoDAO = new EventoDAO(eventoVO);
-        return eventoDAO.buscarEvento();
+        return eventoDAO.buscarNome();
     }
  
     public void validarCampos(String nome, String tipoEvento, String data, String horaInicial, String horaFinal) throws ValidacaoException{
