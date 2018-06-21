@@ -1,11 +1,20 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package view;
 
-import controller.AlunoControll;
+import controller.EventoControll;
 import controller.ValidacaoException;
 import java.awt.HeadlessException;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
+/**
+ *
+ * @author cesarvergara
+ */
 public class FormularioAlunoView extends javax.swing.JFrame {
 
     /**
@@ -13,9 +22,8 @@ public class FormularioAlunoView extends javax.swing.JFrame {
      */
     public FormularioAlunoView() {
         initComponents();
-        this.setTitle("Cadastro Aluno");
-        this.setLocationRelativeTo(null);
-
+        this.setTitle("Cadastro de Evento");
+        
     }
         @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -26,24 +34,23 @@ public class FormularioAlunoView extends javax.swing.JFrame {
         inputNome4 = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        textCadastro = new javax.swing.JLabel();
-        textNome = new javax.swing.JLabel();
-        textRA = new javax.swing.JLabel();
-        textCurso = new javax.swing.JLabel();
-        textEMAIL = new javax.swing.JLabel();
-        textTurno = new javax.swing.JLabel();
+        Title = new javax.swing.JLabel();
+        deleteEvent = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         inputNome = new javax.swing.JTextField();
-        inputRA = new javax.swing.JTextField();
-        inputCurso = new javax.swing.JTextField();
-        inputEMAIL = new javax.swing.JTextField();
-        inputTurno = new javax.swing.JComboBox<>();
-        textPeriodo = new javax.swing.JLabel();
-        inputPeriodo = new javax.swing.JComboBox<>();
-        textTelefone = new javax.swing.JLabel();
-        saveAluno = new javax.swing.JLabel();
-        inputTelefone = new javax.swing.JFormattedTextField();
-        cancelar = new javax.swing.JLabel();
-        editarAluno = new javax.swing.JLabel();
+        inputData = new javax.swing.JTextField();
+        inputHoraInicial = new javax.swing.JTextField();
+        inputHoraFinal = new javax.swing.JTextField();
+        inputTipoEvento = new javax.swing.JComboBox<>();
+        jLabel10 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        inputHoraFinal1 = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        deleteEvent1 = new javax.swing.JLabel();
 
         jLabel3.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -72,110 +79,91 @@ public class FormularioAlunoView extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(44, 62, 80));
 
-        textCadastro.setFont(new java.awt.Font("Open Sans", 1, 13)); // NOI18N
-        textCadastro.setForeground(new java.awt.Color(255, 255, 255));
-        textCadastro.setText("Cadastro de Alunos");
+        Title.setFont(new java.awt.Font("Open Sans", 1, 13)); // NOI18N
+        Title.setForeground(new java.awt.Color(255, 255, 255));
+        Title.setText("Cadastro de Alunos");
 
-        textNome.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
-        textNome.setForeground(new java.awt.Color(255, 255, 255));
-        textNome.setText("Nome:");
+        deleteEvent.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        deleteEvent.setForeground(new java.awt.Color(244, 67, 54));
+        deleteEvent.setText("CANCELAR");
 
-        textRA.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
-        textRA.setForeground(new java.awt.Color(255, 255, 255));
-        textRA.setText("RA:");
+        jLabel2.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Nome:");
 
-        textCurso.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
-        textCurso.setForeground(new java.awt.Color(255, 255, 255));
-        textCurso.setText("Curso:");
+        jLabel4.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("RA:");
 
-        textEMAIL.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
-        textEMAIL.setForeground(new java.awt.Color(255, 255, 255));
-        textEMAIL.setText("E-mail:");
+        jLabel5.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Curso:");
 
-        textTurno.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
-        textTurno.setForeground(new java.awt.Color(255, 255, 255));
-        textTurno.setText("Turno:");
+        jLabel7.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("E-mail:");
+
+        jLabel8.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Turno:");
 
         inputNome.setBorder(null);
         inputNome.setMargin(new java.awt.Insets(0, 10, 0, 0));
 
-        inputRA.setBorder(null);
-        inputRA.addActionListener(new java.awt.event.ActionListener() {
+        inputData.setBorder(null);
+        inputData.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inputRAActionPerformed(evt);
+                inputDataActionPerformed(evt);
             }
         });
 
-        inputCurso.setBorder(null);
-        inputCurso.addActionListener(new java.awt.event.ActionListener() {
+        inputHoraInicial.setBorder(null);
+        inputHoraInicial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inputCursoActionPerformed(evt);
+                inputHoraInicialActionPerformed(evt);
             }
         });
 
-        inputEMAIL.setBorder(null);
-        inputEMAIL.addActionListener(new java.awt.event.ActionListener() {
+        inputHoraFinal.setBorder(null);
+        inputHoraFinal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inputEMAILActionPerformed(evt);
+                inputHoraFinalActionPerformed(evt);
             }
         });
 
-        inputTurno.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
-        inputTurno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Matutino", "Vespertino", "Noturno", "Integral" }));
-        inputTurno.addActionListener(new java.awt.event.ActionListener() {
+        inputTipoEvento.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
+        inputTipoEvento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Matutino", "Vespertino", "Noturno", "Integral" }));
+        inputTipoEvento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inputTurnoActionPerformed(evt);
+                inputTipoEventoActionPerformed(evt);
             }
         });
 
-        textPeriodo.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
-        textPeriodo.setForeground(new java.awt.Color(255, 255, 255));
-        textPeriodo.setText("Período:");
+        jLabel10.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("Período:");
 
-        inputPeriodo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
-        inputPeriodo.addActionListener(new java.awt.event.ActionListener() {
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inputPeriodoActionPerformed(evt);
+                jComboBox1ActionPerformed(evt);
             }
         });
 
-        textTelefone.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
-        textTelefone.setForeground(new java.awt.Color(255, 255, 255));
-        textTelefone.setText("Telefone:");
-
-        saveAluno.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        saveAluno.setForeground(new java.awt.Color(3, 218, 198));
-        saveAluno.setText("CADASTRAR");
-        saveAluno.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                saveAlunoMouseClicked(evt);
+        inputHoraFinal1.setBorder(null);
+        inputHoraFinal1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputHoraFinal1ActionPerformed(evt);
             }
         });
 
-        inputTelefone.setBorder(null);
-        try {
-            inputTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
+        jLabel11.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("Telefone:");
 
-        cancelar.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        cancelar.setForeground(new java.awt.Color(244, 67, 54));
-        cancelar.setText("CANCELAR");
-        cancelar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cancelarMouseClicked(evt);
-            }
-        });
-
-        editarAluno.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        editarAluno.setForeground(new java.awt.Color(3, 218, 198));
-        editarAluno.setText("CONCLUIR EDITAÇÃO");
-        editarAluno.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                editarAlunoMouseClicked(evt);
-            }
-        });
+        deleteEvent1.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        deleteEvent1.setForeground(new java.awt.Color(3, 218, 198));
+        deleteEvent1.setText("CADASTRAR");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -185,90 +173,77 @@ public class FormularioAlunoView extends javax.swing.JFrame {
                 .addGap(12, 12, 12)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(textCadastro)
+                        .addComponent(Title)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(textTurno)
-                            .addComponent(inputTurno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8)
+                            .addComponent(inputTipoEvento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(inputCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(textCurso))
+                                    .addComponent(inputHoraInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel5))
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(19, 19, 19)
-                                        .addComponent(textPeriodo))
+                                        .addComponent(jLabel10))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(18, 18, 18)
-                                        .addComponent(inputPeriodo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(inputNome, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(inputRA, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(textEMAIL, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(textRA, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(textNome, javax.swing.GroupLayout.Alignment.LEADING))
-                                    .addGap(0, 0, Short.MAX_VALUE))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(inputHoraFinal1, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel11))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(inputHoraFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(inputNome, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(inputData, javax.swing.GroupLayout.Alignment.LEADING))
                                 .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(0, 0, Short.MAX_VALUE)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(textTelefone)
-                                            .addGap(326, 326, 326))
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(cancelar)
-                                            .addGap(43, 43, 43)
-                                            .addComponent(editarAluno)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(saveAluno))))))
-                        .addGap(0, 26, Short.MAX_VALUE))))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(inputTelefone, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 381, Short.MAX_VALUE)
-                    .addComponent(inputEMAIL, javax.swing.GroupLayout.Alignment.LEADING))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(deleteEvent)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(deleteEvent1))))
+                        .addGap(0, 15, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(textCadastro)
+                .addComponent(Title)
                 .addGap(18, 18, 18)
-                .addComponent(textNome)
+                .addComponent(jLabel2)
                 .addGap(8, 8, 8)
                 .addComponent(inputNome, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(11, 11, 11)
-                .addComponent(textRA)
+                .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(inputRA, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(inputData, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(textEMAIL)
+                .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(inputEMAIL, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(inputHoraFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
-                .addComponent(textTelefone)
-                .addGap(17, 17, 17)
-                .addComponent(inputTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(inputHoraFinal1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textCurso)
-                    .addComponent(textPeriodo))
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel10))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(inputCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(inputPeriodo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(inputHoraInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(textTurno)
+                .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(inputTurno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(inputTipoEvento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(saveAluno)
-                    .addComponent(cancelar)
-                    .addComponent(editarAluno))
+                    .addComponent(deleteEvent1)
+                    .addComponent(deleteEvent))
                 .addGap(27, 27, 27))
         );
 
@@ -276,7 +251,7 @@ public class FormularioAlunoView extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -288,102 +263,33 @@ public class FormularioAlunoView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void inputRAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputRAActionPerformed
+    private void inputDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputDataActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_inputRAActionPerformed
+    }//GEN-LAST:event_inputDataActionPerformed
 
-    private void inputCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputCursoActionPerformed
+    private void inputHoraInicialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputHoraInicialActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_inputCursoActionPerformed
+    }//GEN-LAST:event_inputHoraInicialActionPerformed
 
-    private void inputEMAILActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputEMAILActionPerformed
+    private void inputHoraFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputHoraFinalActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_inputEMAILActionPerformed
+    }//GEN-LAST:event_inputHoraFinalActionPerformed
 
     private void inputNome4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputNome4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_inputNome4ActionPerformed
 
-    private void inputTurnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputTurnoActionPerformed
+    private void inputTipoEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputTipoEventoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_inputTurnoActionPerformed
+    }//GEN-LAST:event_inputTipoEventoActionPerformed
 
-    private void inputPeriodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputPeriodoActionPerformed
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_inputPeriodoActionPerformed
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
-    private void saveAlunoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveAlunoMouseClicked
-      
-        try {            
-            AlunoControll alunoControl = new AlunoControll();
-            alunoControl.cadastrar(this.inputRA.getText(),
-                    this.inputNome.getText(),
-                    this.inputCurso.getText(),
-                    this.inputPeriodo.getSelectedItem().toString(),
-                    this.inputTurno.getSelectedItem().toString(),
-                    this.inputEMAIL.getText(), 
-                    this.inputTelefone.getText());
- 
-            //this.buscaAlunoView.buscarAlunos();
-            
-            JOptionPane.showMessageDialog(rootPane, "Cadastro realizado com sucesso!", "Cadastro Aluno", JOptionPane.INFORMATION_MESSAGE);
-           
-            
-            this.dispose();
-            
-        } catch (ValidacaoException validacaoException) {
-            
-            JOptionPane.showMessageDialog(rootPane, validacaoException.getMessage(), "Cadastro Aluno", JOptionPane.WARNING_MESSAGE);
-        
-        } catch (HeadlessException | ClassNotFoundException | SQLException ex) {
-            
-            JOptionPane.showMessageDialog(rootPane, "Erro ao efetuar o cadastro!", "Cadastro Aluno", JOptionPane.ERROR_MESSAGE);
-        
-        }
-        HomeAlunoView form = new HomeAlunoView();
-        form.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_saveAlunoMouseClicked
-
-    private void cancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelarMouseClicked
-        HomeAlunoView form = new HomeAlunoView();
-        form.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_cancelarMouseClicked
-
-    private void editarAlunoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarAlunoMouseClicked
-
-        try {
-            
-            AlunoControll alunoControl = new AlunoControll();
-            alunoControl.editar(this.inputRA.getText(), 
-                    this.inputNome.getText(), 
-                    this.inputCurso.getText(), 
-                    this.inputPeriodo.getSelectedItem().toString(), 
-                    this.inputTurno.getSelectedItem().toString(), 
-                    this.inputEMAIL.getText(),
-                    this.inputTelefone.getText());
-            
-          //  this.buscaAlunoView.buscarAlunos();
-            
-            JOptionPane.showMessageDialog(rootPane, "Edição realizada com sucesso!", "Editar Cliente", JOptionPane.INFORMATION_MESSAGE);
-            
-            this.dispose();
-            
-        } catch (ValidacaoException validacaoException) {
-            
-            JOptionPane.showMessageDialog(rootPane, validacaoException.getMessage(), "Editar Aluno", JOptionPane.WARNING_MESSAGE);
-        
-        } catch (Exception ex) {
-            
-            JOptionPane.showMessageDialog(rootPane, "Erro ao efetuar a edição!", "Editar Aluno", JOptionPane.ERROR_MESSAGE);
-        
-        }
-        HomeAlunoView form = new HomeAlunoView();
-        form.setVisible(true);
-        dispose();
-        
-    }//GEN-LAST:event_editarAlunoMouseClicked
+    private void inputHoraFinal1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputHoraFinal1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputHoraFinal1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -428,28 +334,27 @@ public class FormularioAlunoView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel cancelar;
-    private javax.swing.JLabel editarAluno;
-    private javax.swing.JTextField inputCurso;
-    private javax.swing.JTextField inputEMAIL;
+    private javax.swing.JLabel Title;
+    private javax.swing.JLabel deleteEvent;
+    private javax.swing.JLabel deleteEvent1;
+    private javax.swing.JTextField inputData;
+    private javax.swing.JTextField inputHoraFinal;
+    private javax.swing.JTextField inputHoraFinal1;
+    private javax.swing.JTextField inputHoraInicial;
     private javax.swing.JTextField inputNome;
     private javax.swing.JTextField inputNome4;
-    private javax.swing.JComboBox<String> inputPeriodo;
-    private javax.swing.JTextField inputRA;
-    private javax.swing.JFormattedTextField inputTelefone;
-    private javax.swing.JComboBox<String> inputTurno;
+    private javax.swing.JComboBox<String> inputTipoEvento;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel saveAluno;
-    private javax.swing.JLabel textCadastro;
-    private javax.swing.JLabel textCurso;
-    private javax.swing.JLabel textEMAIL;
-    private javax.swing.JLabel textNome;
-    private javax.swing.JLabel textPeriodo;
-    private javax.swing.JLabel textRA;
-    private javax.swing.JLabel textTelefone;
-    private javax.swing.JLabel textTurno;
     // End of variables declaration//GEN-END:variables
 }

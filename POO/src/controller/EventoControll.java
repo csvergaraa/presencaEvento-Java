@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import vo.EventoVO;
 
-public class EventoControll implements CrudControll{
+public class EventoControll {
     private EventoVO eventoVO;
     
     public EventoControll(){
@@ -28,7 +28,7 @@ public class EventoControll implements CrudControll{
         eventoVO.setHoraFinal(horaFinal);
         
         EventoDAO eventoDao = new EventoDAO(eventoVO);
-        eventoDao.cadastrar();
+        eventoDao.cadastrarEvento();
     }
     
     public void editarAluno(String nome, String tipoEvento, String data, String horaInicial, String horaFinal) throws ValidacaoException, SQLException, Exception {
@@ -44,33 +44,22 @@ public class EventoControll implements CrudControll{
         eventoVO.setHoraFinal(horaFinal);
         
         EventoDAO eventoDao = new EventoDAO(eventoVO);
-        eventoDao.editar();
+        eventoDao.editarEvento();
     }
 
-    @Override
-    public void excluir() throws SQLException, Exception {
+    public void excluirEvento() throws SQLException, Exception {
 
         EventoDAO eventoPers = new EventoDAO(this.eventoVO);
-        eventoPers.excluir();
+        eventoPers.excluirEvento();
     }
     
-    @Override
-     public ArrayList<EventoVO> buscar() throws SQLException, Exception {
-
-        EventoDAO eventoDao = new EventoDAO();
-        return eventoDao.buscar();
-    }
-    
-    
-    
-    @Override
-    public ArrayList<EventoVO> buscarNome(String nome) throws SQLException, Exception {
+    public ArrayList<EventoVO> buscarEvento(String nome) throws SQLException, Exception {
         
         EventoVO eventoVO = new EventoVO();
         eventoVO.setNome(nome);
         
         EventoDAO eventoDAO = new EventoDAO(eventoVO);
-        return eventoDAO.buscarNome();
+        return eventoDAO.buscarEvento();
     }
  
     public void validarCampos(String nome, String tipoEvento, String data, String horaInicial, String horaFinal) throws ValidacaoException{
@@ -87,8 +76,6 @@ public class EventoControll implements CrudControll{
             throw new ValidacaoException("Campo Hora Final é obrigatório");
         }
     }
-
-    
 }
  
     

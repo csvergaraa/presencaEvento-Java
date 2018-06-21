@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import vo.AlunoVO;
 
-public class AlunoControll implements CrudControll{
+public class AlunoControll {
     private AlunoVO alunoVO;
     
     public AlunoControll(){
@@ -16,7 +16,7 @@ public class AlunoControll implements CrudControll{
         this.alunoVO = alunoVO;
     }
     
-    public void cadastrar(String RA, String nome, String curso, String periodo, String turno, String email, String telefone) throws ClassNotFoundException, SQLException, ValidacaoException{
+    public void cadastrarAluno(String RA, String nome, String curso, String periodo, String turno, String email, String telefone) throws ClassNotFoundException, SQLException, ValidacaoException{
         this.validarCampos(RA, nome, curso, periodo, turno, email, telefone);
 
         AlunoVO alunoVO = new AlunoVO();
@@ -30,10 +30,10 @@ public class AlunoControll implements CrudControll{
         alunoVO.setTelefone(telefone);
 
         AlunoDAO alunoDao = new AlunoDAO(alunoVO);
-        alunoDao.cadastrar();
+        alunoDao.cadastrarAluno();
     }
     
-    public void editar(String RA, String nome, String curso, String periodo, String turno, String email, String telefone) throws ValidacaoException, SQLException, Exception {
+    public void editarAluno(String RA, String nome, String curso, String periodo, String turno, String email, String telefone) throws ValidacaoException, SQLException, Exception {
 
         this.validarCampos(RA, nome, curso, periodo, turno, email, telefone);
 
@@ -48,34 +48,24 @@ public class AlunoControll implements CrudControll{
         alunoVO.setTelefone(telefone);
         
         AlunoDAO alunoDao = new AlunoDAO(alunoVO);
-        alunoDao.editar();
+        alunoDao.editarAluno();
     }
 
-    
-    @Override
-    public void excluir() throws SQLException, Exception {
+    public void excluirAluno() throws SQLException, Exception {
 
         AlunoDAO alunoPers = new AlunoDAO(this.alunoVO);
-        alunoPers.excluir();
+        alunoPers.excluirAluno();
     }
     
-    @Override
-    public ArrayList<AlunoVO> buscarNome(String nome) throws SQLException, Exception {
+    public ArrayList<AlunoVO> buscarAluno(String nome) throws SQLException, Exception {
         
         AlunoVO alunoVO = new AlunoVO();
         alunoVO.setNome(nome);
         
         AlunoDAO alunoDAO = new AlunoDAO(alunoVO);
-        return alunoDAO.buscarNome();
+        return alunoDAO.buscarAluno();
     }
  
-    @Override
-    public ArrayList<AlunoVO> buscar() throws SQLException, Exception {
-
-        AlunoDAO alunoDao = new AlunoDAO();
-        return alunoDao.buscar();
-    }
-    
     public void validarCampos(String RA, String nome, String curso, String periodo, String turno, String email, String telefone) throws ValidacaoException{
         
         if (RA.equals("")) {
