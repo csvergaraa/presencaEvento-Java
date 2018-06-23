@@ -1,6 +1,7 @@
 package vo;
 
 public class AlunoVO {
+    private int IDAluno;
     private int RA;
     private String nome;
     private String curso;
@@ -51,6 +52,10 @@ public class AlunoVO {
         this.turno = turno;
     }
 
+    public void setIDAluno(int IDAluno) {
+        this.IDAluno = IDAluno;
+    }
+    
     public int getRA() {
         return RA;
     }
@@ -77,5 +82,10 @@ public class AlunoVO {
 
     public String getTurno() {
         return turno;
-    }    
+    }  
+
+    public int getIDAluno() {
+        return IDAluno;
+    }
+    
 }

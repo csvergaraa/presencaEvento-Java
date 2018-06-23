@@ -235,7 +235,7 @@ public class HomeAlunoView extends javax.swing.JFrame {
         try {
 
             AlunoVO alunoVO = new AlunoVO();
-            alunoVO.setRA(Integer.parseInt((String) this.tableAluno.getValueAt(this.tableAluno.getSelectedRow(), 0)));
+            alunoVO.setRA(Integer.parseInt(this.tableAluno.getValueAt(this.tableAluno.getSelectedRow(), 0).toString()));
             alunoVO.setNome(this.tableAluno.getValueAt(this.tableAluno.getSelectedRow(), 1).toString());
             
             int op = JOptionPane.showConfirmDialog(rootPane, "Deseja realmente excluir permanentemente o aluno " + alunoVO.getNome() + "?", "Exclusão de Evento", JOptionPane.YES_NO_CANCEL_OPTION);

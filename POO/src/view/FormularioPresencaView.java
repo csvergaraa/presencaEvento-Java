@@ -5,13 +5,17 @@
  */
 package view;
 
+import controller.AlunoControll;
+import controller.AlunoEventoControll;
 import controller.EventoControll;
-import controller.ValidacaoException;
 import java.awt.Color;
-import java.awt.HeadlessException;
 import java.sql.SQLException;
-import javax.swing.JOptionPane;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.border.LineBorder;
+import vo.AlunoVO;
+import vo.EventoVO;
 
 /**
  *
@@ -25,8 +29,10 @@ public class FormularioPresencaView extends javax.swing.JFrame {
     public FormularioPresencaView() {
         initComponents();
 //      this.setTitle("Cadastro de Presença");
-        inputAluno.setBorder(new LineBorder(Color.WHITE, 5, false));
-        inputEvento.setBorder(new LineBorder(Color.WHITE, 5, false));
+        this.setLocationRelativeTo(null);
+        this.inputRA.setSelected(true);
+        this.inputAluno.setBorder(new LineBorder(Color.WHITE, 5, false));
+        this.inputEvento.setBorder(new LineBorder(Color.WHITE, 5, false));
     }
         @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -39,17 +45,17 @@ public class FormularioPresencaView extends javax.swing.JFrame {
         escolhaBusca = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         Title = new javax.swing.JLabel();
-        deleteEvent = new javax.swing.JLabel();
+        buttonVoltar = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         inputEvento = new javax.swing.JTextField();
         inputAluno = new javax.swing.JTextField();
-        deleteEvent1 = new javax.swing.JLabel();
-        deleteEvent2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        deleteEvent3 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        buttonPresenca = new javax.swing.JLabel();
+        buttonBuscarEvento = new javax.swing.JLabel();
+        textEvento = new javax.swing.JLabel();
+        buttonFinalizar = new javax.swing.JLabel();
+        textAluno = new javax.swing.JLabel();
+        inputRA = new javax.swing.JRadioButton();
+        inputNome = new javax.swing.JRadioButton();
         jLabel4 = new javax.swing.JLabel();
 
         jLabel3.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
@@ -84,9 +90,14 @@ public class FormularioPresencaView extends javax.swing.JFrame {
         Title.setForeground(new java.awt.Color(255, 255, 255));
         Title.setText("Controle de Presenças");
 
-        deleteEvent.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        deleteEvent.setForeground(new java.awt.Color(244, 67, 54));
-        deleteEvent.setText("CANCELAR");
+        buttonVoltar.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        buttonVoltar.setForeground(new java.awt.Color(244, 67, 54));
+        buttonVoltar.setText("CANCELAR");
+        buttonVoltar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buttonVoltarMouseClicked(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -103,46 +114,51 @@ public class FormularioPresencaView extends javax.swing.JFrame {
             }
         });
 
-        deleteEvent1.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        deleteEvent1.setForeground(new java.awt.Color(255, 179, 0));
-        deleteEvent1.setText("DAR PRESENÇA");
-        deleteEvent1.addMouseListener(new java.awt.event.MouseAdapter() {
+        buttonPresenca.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        buttonPresenca.setForeground(new java.awt.Color(255, 179, 0));
+        buttonPresenca.setText("DAR PRESENÇA");
+        buttonPresenca.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                deleteEvent1MouseClicked(evt);
+                buttonPresencaMouseClicked(evt);
             }
         });
 
-        deleteEvent2.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        deleteEvent2.setForeground(new java.awt.Color(255, 255, 255));
-        deleteEvent2.setText("BUSCAR");
+        buttonBuscarEvento.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        buttonBuscarEvento.setForeground(new java.awt.Color(255, 255, 255));
+        buttonBuscarEvento.setText("BUSCAR");
+        buttonBuscarEvento.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buttonBuscarEventoMouseClicked(evt);
+            }
+        });
 
-        jLabel1.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(51, 255, 51));
-        jLabel1.setText("Evento 'Palestra do Zezinho' selecionado com sucesso.");
+        textEvento.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
+        textEvento.setForeground(new java.awt.Color(51, 255, 51));
+        textEvento.setText("Evento 'Palestra do Zezinho' selecionado com sucesso.");
 
-        deleteEvent3.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        deleteEvent3.setForeground(new java.awt.Color(3, 218, 198));
-        deleteEvent3.setText("FINALIZAR");
+        buttonFinalizar.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        buttonFinalizar.setForeground(new java.awt.Color(3, 218, 198));
+        buttonFinalizar.setText("FINALIZAR");
 
-        jLabel5.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Presença do aluno 'Jose Pereira' inserida com sucesso.");
+        textAluno.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
+        textAluno.setForeground(new java.awt.Color(255, 255, 255));
+        textAluno.setText("Presença do aluno 'Jose Pereira' inserida com sucesso.");
 
-        escolhaBusca.add(jRadioButton1);
-        jRadioButton1.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
-        jRadioButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jRadioButton1.setText("RA");
-        jRadioButton1.setToolTipText("");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+        escolhaBusca.add(inputRA);
+        inputRA.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
+        inputRA.setForeground(new java.awt.Color(255, 255, 255));
+        inputRA.setText("RA");
+        inputRA.setToolTipText("");
+        inputRA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
+                inputRAActionPerformed(evt);
             }
         });
 
-        escolhaBusca.add(jRadioButton2);
-        jRadioButton2.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
-        jRadioButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jRadioButton2.setText("Nome");
+        escolhaBusca.add(inputNome);
+        inputNome.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
+        inputNome.setForeground(new java.awt.Color(255, 255, 255));
+        inputNome.setText("Nome");
 
         jLabel4.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -155,27 +171,27 @@ public class FormularioPresencaView extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
+                    .addComponent(textAluno)
                     .addComponent(Title)
                     .addComponent(jLabel2)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(inputEvento, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(deleteEvent2))
-                    .addComponent(jLabel1)
+                        .addComponent(buttonBuscarEvento))
+                    .addComponent(textEvento)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(deleteEvent)
+                        .addComponent(buttonVoltar)
                         .addGap(179, 179, 179)
-                        .addComponent(deleteEvent3))
+                        .addComponent(buttonFinalizar))
                     .addComponent(jLabel4)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jRadioButton1)
+                        .addComponent(inputRA)
                         .addGap(18, 18, 18)
-                        .addComponent(jRadioButton2))
+                        .addComponent(inputNome))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(inputAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(deleteEvent1)))
+                        .addComponent(buttonPresenca)))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -188,25 +204,25 @@ public class FormularioPresencaView extends javax.swing.JFrame {
                 .addGap(8, 8, 8)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(inputEvento, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(deleteEvent2))
+                    .addComponent(buttonBuscarEvento))
                 .addGap(26, 26, 26)
-                .addComponent(jLabel1)
+                .addComponent(textEvento)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2))
+                    .addComponent(inputRA)
+                    .addComponent(inputNome))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(inputAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(deleteEvent1))
+                    .addComponent(buttonPresenca))
                 .addGap(26, 26, 26)
-                .addComponent(jLabel5)
+                .addComponent(textAluno)
                 .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(deleteEvent)
-                    .addComponent(deleteEvent3))
+                    .addComponent(buttonVoltar)
+                    .addComponent(buttonFinalizar))
                 .addGap(15, 15, 15))
         );
 
@@ -226,22 +242,90 @@ public class FormularioPresencaView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+        
     private void inputNome4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputNome4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_inputNome4ActionPerformed
 
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+    private void inputRAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputRAActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
+    }//GEN-LAST:event_inputRAActionPerformed
 
-    private void deleteEvent1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteEvent1MouseClicked
+    private void buttonPresencaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonPresencaMouseClicked
+
+        try {
+        
+            String text = this.inputAluno.getText();
+            AlunoControll alunoControl = new AlunoControll();
+            AlunoVO alunoVO;
+            if(this.inputNome.isSelected()){
+                ArrayList<AlunoVO> aluno = alunoControl.buscarNome(text);
+                alunoVO = aluno.get(0);
+            } else {
+               alunoVO = alunoControl.buscarRA(text);
+            }
+            
+            String evento = this.inputEvento.getText();
+            EventoControll eventoControl = new EventoControll();
+            ArrayList<EventoVO> event = eventoControl.buscarNome(evento);
+            EventoVO eventoVO = event.get(0);
+            
+            AlunoEventoControll alunoEventoControl = new AlunoEventoControll(alunoVO, eventoVO);
+            alunoEventoControl.cadastrar();
+            
+            this.textAluno.setForeground(Color.green);
+            this.textAluno.setText("Presença do aluno '" + alunoVO.getNome() + "' inserida com sucesso.");
+            
+        } catch (SQLException ex) {
+        
+            this.textAluno.setForeground(Color.red);
+            this.textAluno.setText("ERRO!");
+            
+        } catch (Exception ex) {
+            
+            this.textAluno.setForeground(Color.red);
+            this.textAluno.setText("ERRO!");
+            
+        }
+                
         inputAluno.setText("");
         inputAluno.requestFocus();
-    }//GEN-LAST:event_deleteEvent1MouseClicked
+    }//GEN-LAST:event_buttonPresencaMouseClicked
 
     private void inputAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputAlunoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_inputAlunoActionPerformed
+
+    private void buttonVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonVoltarMouseClicked
+        HomeProgramaView home = new HomeProgramaView();
+        home.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_buttonVoltarMouseClicked
+
+    private void buttonBuscarEventoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonBuscarEventoMouseClicked
+
+        try {
+        
+            String nome = this.inputEvento.getText();
+            
+            EventoControll eventoControl = new EventoControll();
+            ArrayList<EventoVO> evento = eventoControl.buscarNome(nome);
+            
+            EventoVO eventoVO = evento.get(0);
+            String texto = "Evento '" + eventoVO.getNome()+ "' selecionado com sucesso.";
+            this.textEvento.setText(texto);
+            this.inputEvento.setText(eventoVO.getNome());
+            
+        } catch (SQLException ex) {
+        
+            Logger.getLogger(HomeEventoView.class.getName()).log(Level.SEVERE, null, ex);
+       
+        } catch (Exception ex) {
+            
+            Logger.getLogger(HomeEventoView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_buttonBuscarEventoMouseClicked
 
     /**
      * @param args the command line arguments
@@ -295,23 +379,23 @@ public class FormularioPresencaView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Title;
-    private javax.swing.JLabel deleteEvent;
-    private javax.swing.JLabel deleteEvent1;
-    private javax.swing.JLabel deleteEvent2;
-    private javax.swing.JLabel deleteEvent3;
+    private javax.swing.JLabel buttonBuscarEvento;
+    private javax.swing.JLabel buttonFinalizar;
+    private javax.swing.JLabel buttonPresenca;
+    private javax.swing.JLabel buttonVoltar;
     private javax.swing.ButtonGroup escolhaBusca;
     private javax.swing.JTextField inputAluno;
     private javax.swing.JTextField inputEvento;
+    private javax.swing.JRadioButton inputNome;
     private javax.swing.JTextField inputNome4;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JRadioButton inputRA;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JLabel textAluno;
+    private javax.swing.JLabel textEvento;
     // End of variables declaration//GEN-END:variables
 }

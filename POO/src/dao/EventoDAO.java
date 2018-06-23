@@ -4,11 +4,10 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import static java.time.Clock.system;
 import java.util.ArrayList;
 import vo.EventoVO;
 
-public class EventoDAO{
+public class EventoDAO implements CrudDAO{
     private Conexao conexao;
     private EventoVO eventoVO;
     
@@ -21,20 +20,26 @@ public class EventoDAO{
         this.eventoVO = eventoVO;
     }
     
-    public void cadastrarEvento() throws ClassNotFoundException, SQLException{
+    @Override
+    public void cadastrar() throws ClassNotFoundException, SQLException{
+
+        Connection con = conexao.conectar();
+        Statement sessao = con.createStatement();
+        
         String sql = "INSERT INTO EVENTO(nome, tipo, data, horaInicial, horaFinal) "
                 + "VALUES ('" + eventoVO.getNome() + "','" + eventoVO.getTipoEvento() + "','" 
                 + eventoVO.getData() + "','" + eventoVO.getHoraInicial() + "','" + eventoVO.getHoraFinal() + "');";
-        System.out.println(sql);
-        Connection con = conexao.conectar();
-        Statement sessao = con.createStatement();
 
         sessao.executeUpdate(sql);
-
+        
+   //update EVENTO set horas = (select HOUR(Horas) from  (select TIMEDIFF(horaFinal, horaInicial) Horas from EVENTO) Horas where IDEvento = 4);
+   
+        sessao.execute(sql);
         conexao.desconectar();
     }
     
-    public void editarEvento()throws SQLException, Exception{
+    @Override
+    public void editar()throws SQLException, Exception{
            
         String sql = "UPDATE EVENTO "
                 + "SET nome = '" + eventoVO.getNome() + "', tipoEvento = '" + eventoVO.getTipoEvento()
@@ -50,7 +55,40 @@ public class EventoDAO{
         conexao.desconectar();
     }
 
-    public ArrayList<EventoVO> buscarEvento() throws SQLException, Exception{
+    @Override
+    public ArrayList buscar() throws SQLException, Exception {
+       
+        ArrayList<EventoVO> eventos = new ArrayList<>();
+        String sql = "SELECT * FROM EVENTO";
+
+        Connection con = conexao.conectar();
+        Statement sessao = con.createStatement();
+
+        ResultSet rs = sessao.executeQuery(sql);
+        
+        while (rs.next()) {
+
+            EventoVO eventoVO = new EventoVO();
+
+            eventoVO.setIDEvento(rs.getInt("IDEvento"));
+            eventoVO.setNome(rs.getString("nome"));
+            eventoVO.setData(rs.getString("data"));
+            eventoVO.setHoraInicial(rs.getString("horaInicial"));
+            eventoVO.setHoraFinal(rs.getString("horaFinal"));
+            eventoVO.setTipoEvento(rs.getString("tipo"));
+    
+            eventos.add(eventoVO);
+        }
+
+        conexao.desconectar();
+        
+        return eventos;
+    }
+
+    
+    
+    @Override
+    public ArrayList<EventoVO> buscarNome() throws SQLException, Exception{
      
         ArrayList<EventoVO> eventos = new ArrayList<>();
         String sql = "SELECT * FROM EVENTO WHERE EVENTO.nome like '%" + eventoVO.getNome() + "%'";
@@ -64,12 +102,13 @@ public class EventoDAO{
             
             EventoVO eventoVO = new EventoVO();
             
+            eventoVO.setIDEvento(rs.getInt("IDEvento"));
             eventoVO.setNome(rs.getString("nome"));
-            eventoVO.setTipoEvento(rs.getString("tipoEvento"));
             eventoVO.setData(rs.getString("data"));
             eventoVO.setHoraInicial(rs.getString("horaInicial"));
             eventoVO.setHoraFinal(rs.getString("horaFinal"));
-            
+            eventoVO.setTipoEvento(rs.getString("tipo"));
+        
             eventos.add(eventoVO);
         }
         
@@ -79,8 +118,9 @@ public class EventoDAO{
     }
     
     
-     public void excluirEvento() throws SQLException, Exception {
-        String sql = "DELETE FROM EVENTO WHERE EVENTO.nome = " + eventoVO.getNome();
+    @Override
+     public void excluir() throws SQLException, Exception {
+        String sql = "DELETE FROM EVENTO WHERE EVENTO.nome = '" + eventoVO.getNome() + "';";
         Connection con = conexao.conectar();
         Statement sessao = con.createStatement();
         sessao.executeUpdate(sql);

@@ -1,14 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
-/**
- *
- * @author cesarvergara
- */
 public class HomeProgramaView extends javax.swing.JFrame {
 
     /**
@@ -16,7 +7,7 @@ public class HomeProgramaView extends javax.swing.JFrame {
      */
     public HomeProgramaView() {
         initComponents();
-//        eventsTable.setRowCount(10);
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -31,16 +22,16 @@ public class HomeProgramaView extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         Title = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
+        painelCadastroAluno = new javax.swing.JPanel();
+        textCadastroAluno = new javax.swing.JLabel();
+        painelCadastroEvento = new javax.swing.JPanel();
+        textCadastroEvento = new javax.swing.JLabel();
+        inputControle = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        jPanel6 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
+        painelEditAluno = new javax.swing.JPanel();
+        textEditAluno = new javax.swing.JLabel();
+        painelEditEvento = new javax.swing.JPanel();
+        textEditEvento = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
@@ -59,118 +50,163 @@ public class HomeProgramaView extends javax.swing.JFrame {
         Title.setForeground(new java.awt.Color(255, 255, 255));
         Title.setText("Dashboard");
 
-        jPanel2.setBackground(new java.awt.Color(30, 136, 229));
+        painelCadastroAluno.setBackground(new java.awt.Color(30, 136, 229));
+        painelCadastroAluno.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                painelCadastroAlunoMouseClicked(evt);
+            }
+        });
 
-        jLabel2.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Cadastrar Aluno");
+        textCadastroAluno.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
+        textCadastroAluno.setForeground(new java.awt.Color(255, 255, 255));
+        textCadastroAluno.setText("Cadastrar Aluno");
+        textCadastroAluno.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                textCadastroAlunoMouseClicked(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout painelCadastroAlunoLayout = new javax.swing.GroupLayout(painelCadastroAluno);
+        painelCadastroAluno.setLayout(painelCadastroAlunoLayout);
+        painelCadastroAlunoLayout.setHorizontalGroup(
+            painelCadastroAlunoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelCadastroAlunoLayout.createSequentialGroup()
                 .addContainerGap(206, Short.MAX_VALUE)
-                .addComponent(jLabel2)
+                .addComponent(textCadastroAluno)
                 .addGap(16, 16, 16))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        painelCadastroAlunoLayout.setVerticalGroup(
+            painelCadastroAlunoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelCadastroAlunoLayout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addComponent(jLabel2)
+                .addComponent(textCadastroAluno)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel3.setBackground(new java.awt.Color(94, 53, 177));
+        painelCadastroEvento.setBackground(new java.awt.Color(94, 53, 177));
+        painelCadastroEvento.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                painelCadastroEventoMouseClicked(evt);
+            }
+        });
 
-        jLabel3.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Cadastrar Evento");
+        textCadastroEvento.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
+        textCadastroEvento.setForeground(new java.awt.Color(255, 255, 255));
+        textCadastroEvento.setText("Cadastrar Evento");
+        textCadastroEvento.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                textCadastroEventoMouseClicked(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+        javax.swing.GroupLayout painelCadastroEventoLayout = new javax.swing.GroupLayout(painelCadastroEvento);
+        painelCadastroEvento.setLayout(painelCadastroEventoLayout);
+        painelCadastroEventoLayout.setHorizontalGroup(
+            painelCadastroEventoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelCadastroEventoLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel3)
+                .addComponent(textCadastroEvento)
                 .addGap(20, 20, 20))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        painelCadastroEventoLayout.setVerticalGroup(
+            painelCadastroEventoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelCadastroEventoLayout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addComponent(jLabel3)
+                .addComponent(textCadastroEvento)
                 .addContainerGap(117, Short.MAX_VALUE))
         );
 
-        jPanel4.setBackground(new java.awt.Color(67, 160, 71));
+        inputControle.setBackground(new java.awt.Color(67, 160, 71));
+        inputControle.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                inputControleMouseClicked(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Controle de Presença");
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+        javax.swing.GroupLayout inputControleLayout = new javax.swing.GroupLayout(inputControle);
+        inputControle.setLayout(inputControleLayout);
+        inputControleLayout.setHorizontalGroup(
+            inputControleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, inputControleLayout.createSequentialGroup()
                 .addContainerGap(156, Short.MAX_VALUE)
                 .addComponent(jLabel4)
                 .addGap(19, 19, 19))
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        inputControleLayout.setVerticalGroup(
+            inputControleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(inputControleLayout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addComponent(jLabel4)
                 .addContainerGap(74, Short.MAX_VALUE))
         );
 
-        jPanel5.setBackground(new java.awt.Color(244, 81, 30));
+        painelEditAluno.setBackground(new java.awt.Color(244, 81, 30));
+        painelEditAluno.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                painelEditAlunoMouseClicked(evt);
+            }
+        });
 
-        jLabel5.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Editar Aluno");
+        textEditAluno.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
+        textEditAluno.setForeground(new java.awt.Color(255, 255, 255));
+        textEditAluno.setText("Editar Aluno");
+        textEditAluno.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                textEditAlunoMouseClicked(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+        javax.swing.GroupLayout painelEditAlunoLayout = new javax.swing.GroupLayout(painelEditAluno);
+        painelEditAluno.setLayout(painelEditAlunoLayout);
+        painelEditAlunoLayout.setHorizontalGroup(
+            painelEditAlunoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelEditAlunoLayout.createSequentialGroup()
                 .addContainerGap(48, Short.MAX_VALUE)
-                .addComponent(jLabel5)
+                .addComponent(textEditAluno)
                 .addGap(18, 18, 18))
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+        painelEditAlunoLayout.setVerticalGroup(
+            painelEditAlunoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelEditAlunoLayout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addComponent(jLabel5)
+                .addComponent(textEditAluno)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel6.setBackground(new java.awt.Color(255, 179, 0));
+        painelEditEvento.setBackground(new java.awt.Color(255, 179, 0));
+        painelEditEvento.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                painelEditEventoMouseClicked(evt);
+            }
+        });
 
-        jLabel7.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Editar Evento");
+        textEditEvento.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
+        textEditEvento.setForeground(new java.awt.Color(255, 255, 255));
+        textEditEvento.setText("Editar Evento");
+        textEditEvento.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                textEditEventoMouseClicked(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+        javax.swing.GroupLayout painelEditEventoLayout = new javax.swing.GroupLayout(painelEditEvento);
+        painelEditEvento.setLayout(painelEditEventoLayout);
+        painelEditEventoLayout.setHorizontalGroup(
+            painelEditEventoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelEditEventoLayout.createSequentialGroup()
                 .addContainerGap(34, Short.MAX_VALUE)
-                .addComponent(jLabel7)
+                .addComponent(textEditEvento)
                 .addGap(15, 15, 15))
         );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
+        painelEditEventoLayout.setVerticalGroup(
+            painelEditEventoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelEditEventoLayout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addComponent(jLabel7)
+                .addComponent(textEditEvento)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -231,17 +267,17 @@ public class HomeProgramaView extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(painelCadastroAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(painelEditEvento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(painelEditAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(painelCadastroEvento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(inputControle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(20, 20, 20))
         );
         jPanel1Layout.setVerticalGroup(
@@ -251,13 +287,13 @@ public class HomeProgramaView extends javax.swing.JFrame {
                 .addComponent(Title)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(painelCadastroEvento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(painelCadastroAluno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(painelEditAluno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(inputControle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(painelEditEvento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -282,6 +318,60 @@ public class HomeProgramaView extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void painelCadastroAlunoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_painelCadastroAlunoMouseClicked
+        FormularioAlunoView form = new FormularioAlunoView();
+        form.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_painelCadastroAlunoMouseClicked
+
+    private void textCadastroAlunoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textCadastroAlunoMouseClicked
+        FormularioAlunoView form = new FormularioAlunoView();
+        form.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_textCadastroAlunoMouseClicked
+
+    private void painelEditAlunoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_painelEditAlunoMouseClicked
+        HomeAlunoView form = new HomeAlunoView();
+        form.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_painelEditAlunoMouseClicked
+
+    private void textEditAlunoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textEditAlunoMouseClicked
+        HomeAlunoView form = new HomeAlunoView();
+        form.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_textEditAlunoMouseClicked
+
+    private void painelCadastroEventoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_painelCadastroEventoMouseClicked
+        HomeEventoView form = new HomeEventoView();
+        form.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_painelCadastroEventoMouseClicked
+
+    private void textCadastroEventoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textCadastroEventoMouseClicked
+        HomeEventoView form = new HomeEventoView();
+        form.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_textCadastroEventoMouseClicked
+
+    private void textEditEventoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textEditEventoMouseClicked
+        HomeEventoView form = new HomeEventoView();
+        form.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_textEditEventoMouseClicked
+
+    private void painelEditEventoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_painelEditEventoMouseClicked
+        HomeEventoView form = new HomeEventoView();
+        form.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_painelEditEventoMouseClicked
+
+    private void inputControleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputControleMouseClicked
+        FormularioPresencaView form =  new FormularioPresencaView();
+        form.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_inputControleMouseClicked
 
     /**
      * @param args the command line arguments
@@ -323,21 +413,21 @@ public class HomeProgramaView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Title;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel inputControle;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel painelCadastroAluno;
+    private javax.swing.JPanel painelCadastroEvento;
+    private javax.swing.JPanel painelEditAluno;
+    private javax.swing.JPanel painelEditEvento;
+    private javax.swing.JLabel textCadastroAluno;
+    private javax.swing.JLabel textCadastroEvento;
+    private javax.swing.JLabel textEditAluno;
+    private javax.swing.JLabel textEditEvento;
     // End of variables declaration//GEN-END:variables
 }

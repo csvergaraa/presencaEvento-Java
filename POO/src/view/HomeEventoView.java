@@ -5,6 +5,15 @@
  */
 package view;
 
+import controller.EventoControll;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import vo.EventoVO;
+
 /**
  *
  * @author cesarvergara
@@ -16,11 +25,44 @@ public class HomeEventoView extends javax.swing.JFrame {
      */
     public HomeEventoView() {
         initComponents();
-        editEvent.setVisible(false);
-        deleteEvent.setVisible(false);
-//        eventsTable.setRowCount(10);
+        this.setLocationRelativeTo(null);
+        this.buscarEventos();
     }
 
+    public void buscarEventos() {
+        try {
+
+            EventoControll eventoControl = new EventoControll();
+            ArrayList<EventoVO> eventos = eventoControl.buscar();
+            this.popularTabelaEvento(eventos);
+
+        } catch (Exception ex) {
+
+            Logger.getLogger(HomeEventoView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+
+    public void popularTabelaEvento(ArrayList<EventoVO> eventos) {
+
+        try {
+
+            DefaultTableModel table = (DefaultTableModel) eventsTable.getModel();
+            table.fireTableDataChanged();
+            table.setRowCount(0);
+
+            for (EventoVO eventoVO : eventos) {
+
+                table.addRow(new Object[]{eventoVO.getNome(), eventoVO.getData(), eventoVO.getHoraInicial(), eventoVO.getHoraFinal(), eventoVO.getTipoEvento()});
+            }
+
+        } catch (Exception ex) {
+
+            JOptionPane.showMessageDialog(rootPane, "Erro ao preencher a tabela.", "Buscar Eventos", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -33,10 +75,13 @@ public class HomeEventoView extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         eventsTable = new javax.swing.JTable();
-        Title = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        textEvento = new javax.swing.JLabel();
+        novoEvento = new javax.swing.JLabel();
         editEvent = new javax.swing.JLabel();
         deleteEvent = new javax.swing.JLabel();
+        voltar = new javax.swing.JLabel();
+        inputBuscarEvento = new javax.swing.JTextField();
+        textBuscarEvento = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(44, 62, 80));
@@ -56,52 +101,102 @@ public class HomeEventoView extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(eventsTable);
 
-        Title.setFont(new java.awt.Font("Open Sans", 1, 13)); // NOI18N
-        Title.setForeground(new java.awt.Color(255, 255, 255));
-        Title.setText("Eventos");
+        textEvento.setFont(new java.awt.Font("Open Sans", 1, 13)); // NOI18N
+        textEvento.setForeground(new java.awt.Color(255, 255, 255));
+        textEvento.setText("Eventos");
 
-        jLabel1.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(3, 218, 198));
-        jLabel1.setText("+ NOVO EVENTO");
+        novoEvento.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        novoEvento.setForeground(new java.awt.Color(3, 218, 198));
+        novoEvento.setText("+ NOVO EVENTO");
+        novoEvento.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                novoEventoMouseClicked(evt);
+            }
+        });
 
         editEvent.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         editEvent.setForeground(new java.awt.Color(3, 218, 198));
         editEvent.setText("EDITAR");
+        editEvent.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                editEventMouseClicked(evt);
+            }
+        });
 
         deleteEvent.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         deleteEvent.setForeground(new java.awt.Color(244, 67, 54));
         deleteEvent.setText("EXCLUIR");
+        deleteEvent.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deleteEventMouseClicked(evt);
+            }
+        });
+
+        voltar.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        voltar.setForeground(new java.awt.Color(244, 67, 54));
+        voltar.setText("VOLTAR");
+        voltar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                voltarMouseClicked(evt);
+            }
+        });
+
+        inputBuscarEvento.setBorder(null);
+        inputBuscarEvento.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                inputBuscarEventoKeyReleased(evt);
+            }
+        });
+
+        textBuscarEvento.setFont(new java.awt.Font("Open Sans", 1, 13)); // NOI18N
+        textBuscarEvento.setForeground(new java.awt.Color(255, 255, 255));
+        textBuscarEvento.setText("Buscar Evento:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(12, 12, 12)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Title)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(editEvent)
-                            .addGap(18, 18, 18)
-                            .addComponent(deleteEvent)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel1))
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(textEvento)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGap(4, 4, 4)
+                                    .addComponent(voltar)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(deleteEvent)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(editEvent)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(novoEvento))
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(textBuscarEvento)
+                        .addGap(30, 30, 30)
+                        .addComponent(inputBuscarEvento, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(Title)
+                .addComponent(textEvento)
+                .addGap(37, 37, 37)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(inputBuscarEvento, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textBuscarEvento))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
+                    .addComponent(novoEvento)
                     .addComponent(editEvent)
-                    .addComponent(deleteEvent))
+                    .addComponent(deleteEvent)
+                    .addComponent(voltar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -118,6 +213,78 @@ public class HomeEventoView extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void novoEventoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_novoEventoMouseClicked
+        FormularioEventoView form = new FormularioEventoView();
+        form.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_novoEventoMouseClicked
+
+    private void voltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_voltarMouseClicked
+        HomeProgramaView telaInicial = new HomeProgramaView();
+        telaInicial.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_voltarMouseClicked
+
+    private void inputBuscarEventoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputBuscarEventoKeyReleased
+        try {
+        
+            String nome = this.inputBuscarEvento.getText();
+            
+            EventoControll eventoControl = new EventoControll();
+            ArrayList<EventoVO> eventos = eventoControl.buscarNome(nome);
+            
+            this.popularTabelaEvento(eventos);
+       
+        } catch (SQLException ex) {
+        
+            Logger.getLogger(HomeEventoView.class.getName()).log(Level.SEVERE, null, ex);
+       
+        } catch (Exception ex) {
+            
+            Logger.getLogger(HomeEventoView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_inputBuscarEventoKeyReleased
+
+    private void deleteEventMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteEventMouseClicked
+
+        try {
+
+            EventoVO eventoVO = new EventoVO();
+            eventoVO.setNome(this.eventsTable.getValueAt(this.eventsTable.getSelectedRow(), 0).toString());
+            
+            int op = JOptionPane.showConfirmDialog(rootPane, "Deseja realmente excluir permanentemente o evento " + eventoVO.getNome() + "?", "Exclusão de Evento", JOptionPane.YES_NO_CANCEL_OPTION);
+
+            if (op == 0) {
+
+                EventoControll eventoControl = new EventoControll(eventoVO);
+                eventoControl.excluir();
+
+                JOptionPane.showMessageDialog(rootPane, "Evento excluído com sucesso!", "Exclusão de Evento", JOptionPane.INFORMATION_MESSAGE);
+            }
+
+        } catch (ArrayIndexOutOfBoundsException ex) {
+
+            JOptionPane.showMessageDialog(rootPane, "Selecione um evento na tabela", "Exclusão de Evento", JOptionPane.WARNING_MESSAGE);
+
+        } catch (Exception ex) {
+
+            JOptionPane.showMessageDialog(rootPane, "Erro ao excluir o evento!", "Exclusão de Evento", JOptionPane.ERROR_MESSAGE);
+
+        } finally {
+            
+            this.buscarEventos();
+        }
+
+
+    }//GEN-LAST:event_deleteEventMouseClicked
+
+    private void editEventMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editEventMouseClicked
+
+
+
+    }//GEN-LAST:event_editEventMouseClicked
 
     /**
      * @param args the command line arguments
@@ -156,12 +323,15 @@ public class HomeEventoView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Title;
     private javax.swing.JLabel deleteEvent;
     private javax.swing.JLabel editEvent;
     private javax.swing.JTable eventsTable;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JTextField inputBuscarEvento;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel novoEvento;
+    private javax.swing.JLabel textBuscarEvento;
+    private javax.swing.JLabel textEvento;
+    private javax.swing.JLabel voltar;
     // End of variables declaration//GEN-END:variables
 }

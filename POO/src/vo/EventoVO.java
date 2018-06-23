@@ -1,6 +1,7 @@
 package vo;
 
 public class EventoVO {
+    private int IDEvento;
     private String nome;
     private String tipoEvento;
     private String data;
@@ -17,6 +18,10 @@ public class EventoVO {
         this.tipoEvento = tipoEvento;
         this.horaInicial = horaInicial;
         this.horaFinal = horaFinal;
+    }
+
+    public void setIDEvento(int IDEvento) {
+        this.IDEvento = IDEvento;
     }
 
     public void setNome(String nome) {
@@ -58,4 +63,9 @@ public class EventoVO {
     public String getHoraInicial() {
         return horaInicial;
     }
+
+    public int getIDEvento() {
+        return IDEvento;
+    }
+    
 }
