@@ -6,11 +6,13 @@
 package view;
 
 import controller.EventoControll;
+import java.awt.Color;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 import vo.EventoVO;
 
@@ -27,6 +29,7 @@ public class HomeEventoView extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.buscarEventos();
+        this.inputBuscarEvento.setBorder(new LineBorder(Color.WHITE, 5, false));
     }
 
     public void buscarEventos() {
@@ -282,7 +285,23 @@ public class HomeEventoView extends javax.swing.JFrame {
 
     private void editEventMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editEventMouseClicked
 
+            try {
 
+            EventoVO eventoVO = new EventoVO();
+
+            eventoVO.setNome((String) this.eventsTable.getValueAt(this.eventsTable.getSelectedRow(), 0));
+            eventoVO.setData((String) this.eventsTable.getValueAt(this.eventsTable.getSelectedRow(), 1));
+            eventoVO.setHoraInicial((String) this.eventsTable.getValueAt(this.eventsTable.getSelectedRow(), 2));
+            eventoVO.setHoraFinal((String) this.eventsTable.getValueAt(this.eventsTable.getSelectedRow(), 3));
+            eventoVO.setTipoEvento((String) this.eventsTable.getValueAt(this.eventsTable.getSelectedRow(), 4));
+            
+            FormularioEventoView form = new FormularioEventoView(this, eventoVO);
+            form.setVisible(true);
+
+        } catch (ArrayIndexOutOfBoundsException ex) {
+
+            JOptionPane.showMessageDialog(rootPane, "Selecione um registro na tabela", "Edição de Registro", JOptionPane.WARNING_MESSAGE);
+        }
 
     }//GEN-LAST:event_editEventMouseClicked
 

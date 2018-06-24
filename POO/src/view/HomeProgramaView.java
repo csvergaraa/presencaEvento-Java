@@ -350,7 +350,7 @@ public class HomeProgramaView extends javax.swing.JFrame {
     }//GEN-LAST:event_painelCadastroEventoMouseClicked
 
     private void textCadastroEventoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textCadastroEventoMouseClicked
-        HomeEventoView form = new HomeEventoView();
+        FormularioEventoView form = new FormularioEventoView();
         form.setVisible(true);
         dispose();
     }//GEN-LAST:event_textCadastroEventoMouseClicked

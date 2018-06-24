@@ -1,11 +1,13 @@
 package view;
 
 import controller.AlunoControll;
+import java.awt.Color;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 import vo.AlunoVO;
 
@@ -15,6 +17,7 @@ public class HomeAlunoView extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.buscarAlunos();
+        this.inputBuscarAluno.setBorder(new LineBorder(Color.WHITE, 5, false));
     }
 
     public void buscarAlunos() {
@@ -91,6 +94,11 @@ public class HomeAlunoView extends javax.swing.JFrame {
         editAluno.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         editAluno.setForeground(new java.awt.Color(3, 218, 198));
         editAluno.setText("EDITAR");
+        editAluno.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                editAlunoMouseClicked(evt);
+            }
+        });
 
         deleteAluno.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         deleteAluno.setForeground(new java.awt.Color(244, 67, 54));
@@ -262,6 +270,29 @@ public class HomeAlunoView extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_deleteAlunoMouseClicked
+
+    private void editAlunoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editAlunoMouseClicked
+            try {
+
+            AlunoVO alunoVO = new AlunoVO();
+
+            alunoVO.setRA(Integer.parseInt(this.tableAluno.getValueAt(this.tableAluno.getSelectedRow(), 0).toString()));
+            alunoVO.setNome((String) this.tableAluno.getValueAt(this.tableAluno.getSelectedRow(), 1));
+            alunoVO.setCurso((String) this.tableAluno.getValueAt(this.tableAluno.getSelectedRow(), 2));
+            alunoVO.setPeriodo(Integer.parseInt(this.tableAluno.getValueAt(this.tableAluno.getSelectedRow(), 3).toString()));
+            alunoVO.setTurno((String) this.tableAluno.getValueAt(this.tableAluno.getSelectedRow(), 4).toString());
+            alunoVO.setEmail((String) this.tableAluno.getValueAt(this.tableAluno.getSelectedRow(), 5));
+            alunoVO.setTelefone((String) this.tableAluno.getValueAt(this.tableAluno.getSelectedRow(), 6));
+            
+            FormularioAlunoView form = new FormularioAlunoView(this, alunoVO);
+            form.setVisible(true);
+
+        } catch (ArrayIndexOutOfBoundsException ex) {
+
+            JOptionPane.showMessageDialog(rootPane, "Selecione um registro na tabela", "Edição de Registro", JOptionPane.WARNING_MESSAGE);
+        }
+
+    }//GEN-LAST:event_editAlunoMouseClicked
 
     /**
      * @param args the command line arguments

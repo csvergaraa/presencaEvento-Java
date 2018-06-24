@@ -2,9 +2,12 @@ package view;
 
 import controller.AlunoControll;
 import controller.ValidacaoException;
+import java.awt.Color;
 import java.awt.HeadlessException;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import javax.swing.border.LineBorder;
+import vo.AlunoVO;
 
 public class FormularioAlunoView extends javax.swing.JFrame {
 
@@ -15,9 +18,44 @@ public class FormularioAlunoView extends javax.swing.JFrame {
         initComponents();
         this.setTitle("Cadastro Aluno");
         this.setLocationRelativeTo(null);
-
+        this.editarAluno.setEnabled(false);
+        this.inputNome.setBorder(new LineBorder(Color.WHITE, 5, false));
+        this.inputRA.setBorder(new LineBorder(Color.WHITE, 5, false));        
+        this.inputEMAIL.setBorder(new LineBorder(Color.WHITE, 5, false));
+        this.inputTelefone.setBorder(new LineBorder(Color.WHITE, 5, false));
+        this.inputCurso.setBorder(new LineBorder(Color.WHITE, 5, false));        
+ 
     }
-        @SuppressWarnings("unchecked")
+
+        public FormularioAlunoView(HomeAlunoView homeAluno, AlunoVO alunoVO) {
+
+        initComponents();
+        this.setTitle("Edição de Registro de Aluno");
+        this.saveAluno.setEnabled(false);
+        this.inputRA.setEnabled(false);
+        this.setLocationRelativeTo(null);
+        this.inputNome.setBorder(new LineBorder(Color.WHITE, 5, false));
+        this.inputRA.setBorder(new LineBorder(Color.WHITE, 5, false));        
+        this.inputEMAIL.setBorder(new LineBorder(Color.WHITE, 5, false));
+        this.inputTelefone.setBorder(new LineBorder(Color.WHITE, 5, false));
+        this.inputCurso.setBorder(new LineBorder(Color.WHITE, 5, false));        
+        
+        popularCampos(alunoVO);
+    }
+    
+    public void popularCampos(AlunoVO alunoVO) {
+        
+        this.inputRA.setText(String.valueOf(alunoVO.getRA()));
+        this.inputNome.setText(alunoVO.getNome());
+        this.inputCurso.setText(alunoVO.getCurso());
+        this.inputPeriodo.setSelectedItem(alunoVO.getPeriodo());
+        this.inputTelefone.setText(alunoVO.getTelefone());
+        this.inputEMAIL.setText(alunoVO.getEmail());
+        this.inputTurno.setSelectedItem(alunoVO.getTurno());
+    }
+
+    
+    @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -170,7 +208,7 @@ public class FormularioAlunoView extends javax.swing.JFrame {
 
         editarAluno.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         editarAluno.setForeground(new java.awt.Color(3, 218, 198));
-        editarAluno.setText("CONCLUIR EDITAÇÃO");
+        editarAluno.setText("CONCLUIR EDIÇÃO");
         editarAluno.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 editarAlunoMouseClicked(evt);
@@ -219,9 +257,9 @@ public class FormularioAlunoView extends javax.swing.JFrame {
                                             .addGap(326, 326, 326))
                                         .addGroup(jPanel1Layout.createSequentialGroup()
                                             .addComponent(cancelar)
-                                            .addGap(43, 43, 43)
-                                            .addComponent(editarAluno)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(editarAluno)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                             .addComponent(saveAluno))))))
                         .addGap(0, 26, Short.MAX_VALUE))))
             .addGroup(jPanel1Layout.createSequentialGroup()
