@@ -3,9 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/lacomski/Documentos/Programação/2018/Programação%20Orientado%20a%20Objetos/POO/src/view/FormularioPresencaView.java</file>
-            <file>file:/home/lacomski/Documentos/Programação/2018/Programação%20Orientado%20a%20Objetos/POO/src/controller/AlunoEventoControll.java</file>
-            <file>file:/home/lacomski/Documentos/Programação/2018/Programação%20Orientado%20a%20Objetos/POO/src/dao/AlunoEventoDAO.java</file>
+            <file>file:/home/lacomski/Documentos/Programação/2018/Programação%20Orientado%20a%20Objetos/POO/src/controller/EventoControll.java</file>
+            <file>file:/home/lacomski/Documentos/Programação/2018/Programação%20Orientado%20a%20Objetos/POO/src/dao/AlunoDAO.java</file>
+            <file>file:/home/lacomski/Documentos/Programação/2018/Programação%20Orientado%20a%20Objetos/POO/src/view/FormularioAlunoView.java</file>
+            <file>file:/home/lacomski/Documentos/Programação/2018/Programação%20Orientado%20a%20Objetos/POO/src/dao/EventoDAO.java</file>
         </group>
     </open-files>
 </project-private>
