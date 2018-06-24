@@ -30,7 +30,7 @@ public class EventoDAO implements CrudDAO{
                 + "VALUES ('" + eventoVO.getNome() + "','" + eventoVO.getTipoEvento() + "','" 
                 + eventoVO.getData() + "','" + eventoVO.getHoraInicial() + "','" + eventoVO.getHoraFinal() + "');";
 
-        sessao.executeUpdate(sql);
+     //   sessao.executeUpdate(sql);
         
    //update EVENTO set horas = (select HOUR(Horas) from  (select TIMEDIFF(horaFinal, horaInicial) Horas from EVENTO) Horas where IDEvento = 4);
    
