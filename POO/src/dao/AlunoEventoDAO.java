@@ -81,7 +81,7 @@ public class AlunoEventoDAO{
         String sql = "SELECT ALUNO.ra as RA, ALUNO.nome as Nome, ALUNO.curso as Curso, ALUNO.periodo \n" +
                      "as Periodo, ALUNO.turno as Turno, ALUNO.email as Email, EVENTO.nome as Evento, \n" +
                      "EVENTO.horas as Horas FROM EVENTO, ALUNO, EventoAluno where \n" +
-                     "EventoAluno.IDEvento = EVENTO.IDEvento and ALUNO.IDAluno = EventoAluno.IDAluno;";
+                     "EventoAluno.IDEvento = EVENTO.IDEvento and ALUNO.IDAluno = EventoAluno.IDAluno order by Nome;";
         
         Connection con = conexao.conectar();
         Statement sessao = con.createStatement();
