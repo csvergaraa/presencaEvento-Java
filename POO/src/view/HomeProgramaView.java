@@ -32,8 +32,8 @@ public class HomeProgramaView extends javax.swing.JFrame {
         textEditAluno = new javax.swing.JLabel();
         painelEditEvento = new javax.swing.JPanel();
         textEditEvento = new javax.swing.JLabel();
-        jPanel7 = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
+        painelSorteio = new javax.swing.JPanel();
+        textSorteio = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
 
@@ -210,26 +210,36 @@ public class HomeProgramaView extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel7.setBackground(new java.awt.Color(109, 76, 65));
+        painelSorteio.setBackground(new java.awt.Color(109, 76, 65));
+        painelSorteio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                painelSorteioMouseClicked(evt);
+            }
+        });
 
-        jLabel8.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Sorteio");
+        textSorteio.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
+        textSorteio.setForeground(new java.awt.Color(255, 255, 255));
+        textSorteio.setText("Sorteio");
+        textSorteio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                textSorteioMouseClicked(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+        javax.swing.GroupLayout painelSorteioLayout = new javax.swing.GroupLayout(painelSorteio);
+        painelSorteio.setLayout(painelSorteioLayout);
+        painelSorteioLayout.setHorizontalGroup(
+            painelSorteioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelSorteioLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel8)
+                .addComponent(textSorteio)
                 .addGap(17, 17, 17))
         );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
+        painelSorteioLayout.setVerticalGroup(
+            painelSorteioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelSorteioLayout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addComponent(jLabel8)
+                .addComponent(textSorteio)
                 .addContainerGap(89, Short.MAX_VALUE))
         );
 
@@ -275,7 +285,7 @@ public class HomeProgramaView extends javax.swing.JFrame {
                             .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(painelSorteio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(painelCadastroEvento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(inputControle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(20, 20, 20))
@@ -296,7 +306,7 @@ public class HomeProgramaView extends javax.swing.JFrame {
                     .addComponent(painelEditEvento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(painelSorteio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
@@ -373,6 +383,19 @@ public class HomeProgramaView extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_inputControleMouseClicked
 
+    private void painelSorteioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_painelSorteioMouseClicked
+        HomeSorteioView sorteio = new HomeSorteioView();
+        sorteio.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_painelSorteioMouseClicked
+
+    private void textSorteioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textSorteioMouseClicked
+        HomeSorteioView sorteio = new HomeSorteioView();
+        sorteio.setVisible(true);
+        this.dispose();
+
+    }//GEN-LAST:event_textSorteioMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -416,18 +439,18 @@ public class HomeProgramaView extends javax.swing.JFrame {
     private javax.swing.JPanel inputControle;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel painelCadastroAluno;
     private javax.swing.JPanel painelCadastroEvento;
     private javax.swing.JPanel painelEditAluno;
     private javax.swing.JPanel painelEditEvento;
+    private javax.swing.JPanel painelSorteio;
     private javax.swing.JLabel textCadastroAluno;
     private javax.swing.JLabel textCadastroEvento;
     private javax.swing.JLabel textEditAluno;
     private javax.swing.JLabel textEditEvento;
+    private javax.swing.JLabel textSorteio;
     // End of variables declaration//GEN-END:variables
 }

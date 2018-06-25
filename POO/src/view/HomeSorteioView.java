@@ -29,8 +29,8 @@ public class HomeSorteioView extends javax.swing.JFrame {
      */
     public HomeSorteioView() {
         initComponents();
-//      this.setTitle("Cadastro de Presença");
-//        this.setLocationRelativeTo(null);
+        this.setTitle("Tela de Sorteio");
+        this.setLocationRelativeTo(null);
         this.inputEvento.setBorder(new LineBorder(Color.WHITE, 5, false));
     }
         @SuppressWarnings("unchecked")
@@ -50,7 +50,6 @@ public class HomeSorteioView extends javax.swing.JFrame {
         buttonSorteio = new javax.swing.JLabel();
         buttonBuscarEvento = new javax.swing.JLabel();
         textEvento = new javax.swing.JLabel();
-        buttonFinalizar = new javax.swing.JLabel();
         textAluno = new javax.swing.JLabel();
 
         jLabel3.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
@@ -123,10 +122,6 @@ public class HomeSorteioView extends javax.swing.JFrame {
         textEvento.setForeground(new java.awt.Color(51, 255, 51));
         textEvento.setText("Evento 'Palestra do Zezinho' selecionado com sucesso.");
 
-        buttonFinalizar.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        buttonFinalizar.setForeground(new java.awt.Color(3, 218, 198));
-        buttonFinalizar.setText("FINALIZAR");
-
         textAluno.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
         textAluno.setForeground(new java.awt.Color(255, 255, 255));
         textAluno.setText("Aluno 'Jose Pereira' sorteado com sucesso.");
@@ -146,11 +141,8 @@ public class HomeSorteioView extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(buttonBuscarEvento))
                     .addComponent(textAluno)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(buttonVoltar)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(buttonFinalizar))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(buttonVoltar, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(textEvento, javax.swing.GroupLayout.Alignment.LEADING)))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
@@ -172,10 +164,8 @@ public class HomeSorteioView extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(textAluno)
                 .addGap(27, 27, 27)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonVoltar)
-                    .addComponent(buttonFinalizar))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addComponent(buttonVoltar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -202,26 +192,21 @@ public class HomeSorteioView extends javax.swing.JFrame {
     private void buttonSorteioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSorteioMouseClicked
 
         try {
-        
-            AlunoControll alunoControl = new AlunoControll();
+            
+            AlunoEventoControll alunoEventoControl = new AlunoEventoControll();
             AlunoVO alunoSorteado;
-            
-            // sorteio
-            ArrayList<AlunoVO> sorteio = alunoControl.buscar(); // carregar lista dos alunos (do evento)
-            int qtd;
-            qtd = sorteio.length; // achar a quantidade de elementos (alunos)
-            Random rand = new Random(); // ambiente de sorteio
-            int sorteado = rand.nextInt(qtd) + 0; // maximo eh qtd e minimo 0
-            alunoSorteado = sorteio.get(sorteado);
-            // fim sorteio
-            
+
             String evento = this.inputEvento.getText();
             EventoControll eventoControl = new EventoControll();
             ArrayList<EventoVO> event = eventoControl.buscarNome(evento);
             EventoVO eventoVO = event.get(0);
             
-//            AlunoEventoControll alunoEventoControl = new AlunoEventoControll(alunoVO, eventoVO);
-//            alunoEventoControl.cadastrar();
+            ArrayList<AlunoVO> sorteio = alunoEventoControl.buscar(eventoVO); // carregar lista dos alunos (do evento)
+            int qtd;
+            qtd = sorteio.size(); // achar a quantidade de elementos (alunos)
+            Random rand = new Random(); // ambiente de sorteio
+            int sorteado = rand.nextInt(qtd) + 0; // maximo eh qtd e minimo 0
+            alunoSorteado = sorteio.get(sorteado);
             
             this.textAluno.setForeground(Color.green);
             this.textAluno.setText("'" + alunoSorteado.getNome() + "' foi sorteado com sucesso.");
@@ -229,7 +214,7 @@ public class HomeSorteioView extends javax.swing.JFrame {
         } catch (SQLException ex) {
         
             this.textAluno.setForeground(Color.red);
-            this.textAluno.setText("ERRO!");
+            this.textAluno.setText("ERRO ao sortear Aluno!");
             
         } catch (Exception ex) {
             
@@ -372,7 +357,6 @@ public class HomeSorteioView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Title;
     private javax.swing.JLabel buttonBuscarEvento;
-    private javax.swing.JLabel buttonFinalizar;
     private javax.swing.JLabel buttonSorteio;
     private javax.swing.JLabel buttonVoltar;
     private javax.swing.ButtonGroup escolhaBusca;

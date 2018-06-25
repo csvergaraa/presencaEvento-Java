@@ -101,7 +101,15 @@ public class HomeEventoView extends javax.swing.JFrame {
             new String [] {
                 "Nome do Evento", "Data", "Hora inicial", "Hora final", "Tipo de evento"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(eventsTable);
 
         textEvento.setFont(new java.awt.Font("Open Sans", 1, 13)); // NOI18N

@@ -135,7 +135,15 @@ public class HomeAlunoView extends javax.swing.JFrame {
             new String [] {
                 "RA", "Nome", "Curso", "Periodo", "Turno", "E-mail", "Telefone"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tableAluno);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -208,13 +216,13 @@ public class HomeAlunoView extends javax.swing.JFrame {
     private void newAlunoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newAlunoMouseClicked
         FormularioAlunoView form = new FormularioAlunoView();
         form.setVisible(true);
-        dispose();
+        this.dispose();
     }//GEN-LAST:event_newAlunoMouseClicked
 
     private void voltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_voltarMouseClicked
         HomeProgramaView form = new HomeProgramaView();
         form.setVisible(true);
-        dispose();
+        this.dispose();
     }//GEN-LAST:event_voltarMouseClicked
 
     private void inputBuscarAlunoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputBuscarAlunoKeyReleased
@@ -247,12 +255,11 @@ public class HomeAlunoView extends javax.swing.JFrame {
             alunoVO.setNome(this.tableAluno.getValueAt(this.tableAluno.getSelectedRow(), 1).toString());
             
             int op = JOptionPane.showConfirmDialog(rootPane, "Deseja realmente excluir permanentemente o aluno " + alunoVO.getNome() + "?", "Exclusão de Evento", JOptionPane.YES_NO_CANCEL_OPTION);
+            AlunoControll alunoControl = new AlunoControll(alunoVO);
 
             if (op == 0) {
 
-                AlunoControll alunoControl = new AlunoControll(alunoVO);
                 alunoControl.excluir();
-
                 JOptionPane.showMessageDialog(rootPane, "Aluno excluído com sucesso!", "Exclusão de Evento", JOptionPane.INFORMATION_MESSAGE);
             }
 
@@ -262,7 +269,7 @@ public class HomeAlunoView extends javax.swing.JFrame {
 
         } catch (Exception ex) {
 
-            JOptionPane.showMessageDialog(rootPane, "Erro ao excluir o aluno!", "Exclusão de Aluno", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(rootPane, "ERRO! Aluno está vinculado há algum evento!", "Exclusão de Aluno", JOptionPane.ERROR_MESSAGE);
 
         } finally {
             

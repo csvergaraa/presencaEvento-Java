@@ -289,8 +289,6 @@ public class FormularioEventoView extends javax.swing.JFrame {
             //this.buscaAlunoView.buscarAlunos();
             
             JOptionPane.showMessageDialog(rootPane, "Cadastro realizado com sucesso!", "Cadastro Evento", JOptionPane.INFORMATION_MESSAGE);
-           
-            this.dispose();
             
         } catch (ValidacaoException validacaoException) {
             
@@ -303,7 +301,7 @@ public class FormularioEventoView extends javax.swing.JFrame {
         }
           HomeEventoView form = new HomeEventoView();
           form.setVisible(true);
-          dispose();
+          this.dispose();
     }//GEN-LAST:event_saveEventMouseClicked
 
     private void deleteEventMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteEventMouseClicked

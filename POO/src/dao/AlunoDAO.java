@@ -138,7 +138,7 @@ public class AlunoDAO implements CrudDAO{
         String sql = "DELETE FROM ALUNO WHERE ALUNO.ra = " + alunoVO.getRA() + ";";
         Connection con = conexao.conectar();
         Statement sessao = con.createStatement();
-        sessao.executeUpdate(sql);
+        sessao.execute(sql);
         conexao.desconectar();
     }
     

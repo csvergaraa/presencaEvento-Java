@@ -386,7 +386,7 @@ public class FormularioAlunoView extends javax.swing.JFrame {
     private void cancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelarMouseClicked
         HomeAlunoView form = new HomeAlunoView();
         form.setVisible(true);
-        dispose();
+        this.dispose();
     }//GEN-LAST:event_cancelarMouseClicked
 
     private void editarAlunoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarAlunoMouseClicked
@@ -419,7 +419,7 @@ public class FormularioAlunoView extends javax.swing.JFrame {
         }
         HomeAlunoView form = new HomeAlunoView();
         form.setVisible(true);
-        dispose();
+        this.dispose();
         
     }//GEN-LAST:event_editarAlunoMouseClicked
 

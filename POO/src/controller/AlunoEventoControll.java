@@ -2,6 +2,7 @@ package controller;
 
 import dao.AlunoEventoDAO;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import vo.AlunoVO;
 import vo.EventoVO;
 
@@ -25,5 +26,9 @@ public class AlunoEventoControll {
     }
 
 
-    
+    public ArrayList<AlunoVO> buscar(EventoVO eventoVO) throws Exception{
+        
+        AlunoEventoDAO alunoEventoDAO = new AlunoEventoDAO(0, eventoVO.getIDEvento());
+        return alunoEventoDAO.buscar();
+    }
 }
