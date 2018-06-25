@@ -26,15 +26,13 @@ public class EventoDAO implements CrudDAO{
         Connection con = conexao.conectar();
         Statement sessao = con.createStatement();
         
-        String sql = "INSERT INTO EVENTO(nome, tipo, data, horaInicial, horaFinal) "
+        String sql = "INSERT INTO EVENTO(nome, tipo, data, horaInicial, horaFinal, horas) "
                 + "VALUES ('" + eventoVO.getNome() + "','" + eventoVO.getTipoEvento() + "','" 
-                + eventoVO.getData() + "','" + eventoVO.getHoraInicial() + "','" + eventoVO.getHoraFinal() + "');";
+                + eventoVO.getData() + "','" + eventoVO.getHoraInicial() + "','" + eventoVO.getHoraFinal() + "',"
+                + eventoVO.getHoras() +");";
 
-     //   sessao.executeUpdate(sql);
-        
-   //update EVENTO set horas = (select HOUR(Horas) from  (select TIMEDIFF(horaFinal, horaInicial) Horas from EVENTO) Horas where IDEvento = 4);
-   
         sessao.execute(sql);
+ 
         conexao.desconectar();
     }
     
@@ -42,11 +40,13 @@ public class EventoDAO implements CrudDAO{
     public void editar()throws SQLException, Exception{
            
         String sql = "UPDATE EVENTO "
-                + "SET nome = '" + eventoVO.getNome() + "', tipoEvento = '" + eventoVO.getTipoEvento()
-                + "', data = " + eventoVO.getData() + ", horaInicial = '" + eventoVO.getHoraInicial()
+                + "SET nome = '" + eventoVO.getNome() + "', tipo = '" + eventoVO.getTipoEvento()
+                + "', data = '" + eventoVO.getData() + "', horaInicial = '" + eventoVO.getHoraInicial()
                 + "', horaFinal = '" + eventoVO.getHoraFinal()
-                + "' WHERE ALUNO.RA = " + eventoVO.getNome();
+                + "', horas = " +eventoVO.getHoras()
+                + " WHERE EVENTO.Nome = '" + eventoVO.getNome() + "';";
 
+        System.out.println(sql);
         Connection con = conexao.conectar();
         Statement sessao = con.createStatement();
 

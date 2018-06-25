@@ -281,7 +281,7 @@ public class HomeEventoView extends javax.swing.JFrame {
 
         } catch (Exception ex) {
 
-            JOptionPane.showMessageDialog(rootPane, "Erro ao excluir o evento!", "Exclusão de Evento", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(rootPane, "ERRO! Evento vinculado com alunos", "Exclusão de Evento", JOptionPane.ERROR_MESSAGE);
 
         } finally {
             

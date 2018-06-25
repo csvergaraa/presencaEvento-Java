@@ -16,7 +16,7 @@ public class EventoControll implements CrudControll{
         this.eventoVO = eventoVO;
     }
     
-    public void cadastrarEvento(String nome, String tipoEvento, String data, String horaInicial, String horaFinal) throws ClassNotFoundException, SQLException, ValidacaoException{
+    public void cadastrarEvento(String nome, String tipoEvento, String data, String horaInicial, String horaFinal, String horas) throws ClassNotFoundException, SQLException, ValidacaoException{
         this.validarCampos(nome, tipoEvento, data, horaInicial, horaFinal);
 
         EventoVO eventoVO = new EventoVO();
@@ -26,12 +26,13 @@ public class EventoControll implements CrudControll{
         eventoVO.setData(data);
         eventoVO.setHoraInicial(horaInicial);
         eventoVO.setHoraFinal(horaFinal);
+        eventoVO.setHoras(Integer.parseInt(horas));
         
         EventoDAO eventoDao = new EventoDAO(eventoVO);
         eventoDao.cadastrar();
     }
     
-    public void editarAluno(String nome, String tipoEvento, String data, String horaInicial, String horaFinal) throws ValidacaoException, SQLException, Exception {
+    public void editar(String nome, String data, String horaInicial, String horaFinal, String tipoEvento, String horas) throws ValidacaoException, SQLException, Exception {
 
         this.validarCampos(nome, tipoEvento, data, horaInicial, horaFinal);
 
@@ -42,9 +43,10 @@ public class EventoControll implements CrudControll{
         eventoVO.setData(data);
         eventoVO.setHoraInicial(horaInicial);
         eventoVO.setHoraFinal(horaFinal);
+        eventoVO.setHoras(Integer.parseInt(horas));
         
-        EventoDAO eventoDao = new EventoDAO(eventoVO);
-        eventoDao.editar();
+        EventoDAO eventoDAO = new EventoDAO(eventoVO);
+        eventoDAO.editar();
     }
 
     @Override

@@ -47,6 +47,7 @@ public class FormularioEventoView extends javax.swing.JFrame {
         this.inputHoraInicial.setText(eventoVO.getHoraInicial());
         this.inputHoraFinal.setText(eventoVO.getHoraFinal());
         this.inputTipoEvento.setSelectedItem(eventoVO.getTipoEvento());
+        this.inputHoras.setValue(eventoVO.getHoras());
     }
 
        
@@ -73,6 +74,8 @@ public class FormularioEventoView extends javax.swing.JFrame {
         inputHoraInicial = new javax.swing.JFormattedTextField();
         inputHoraFinal = new javax.swing.JFormattedTextField();
         editarEvento = new javax.swing.JLabel();
+        textTipoEvento1 = new javax.swing.JLabel();
+        inputHoras = new javax.swing.JSpinner();
 
         jLabel3.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -128,7 +131,7 @@ public class FormularioEventoView extends javax.swing.JFrame {
 
         textTipoEvento.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
         textTipoEvento.setForeground(new java.awt.Color(255, 255, 255));
-        textTipoEvento.setText("Tipo de Evento:");
+        textTipoEvento.setText("Total Horas:");
 
         inputNome.setBorder(null);
 
@@ -173,12 +176,16 @@ public class FormularioEventoView extends javax.swing.JFrame {
 
         editarEvento.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         editarEvento.setForeground(new java.awt.Color(3, 218, 198));
-        editarEvento.setText("EDITAR");
+        editarEvento.setText("CONCLUIR EDIÇÃO");
         editarEvento.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 editarEventoMouseClicked(evt);
             }
         });
+
+        textTipoEvento1.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
+        textTipoEvento1.setForeground(new java.awt.Color(255, 255, 255));
+        textTipoEvento1.setText("Tipo de Evento:");
 
         javax.swing.GroupLayout textDataLayout = new javax.swing.GroupLayout(textData);
         textData.setLayout(textDataLayout);
@@ -191,27 +198,37 @@ public class FormularioEventoView extends javax.swing.JFrame {
                         .addGroup(textDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(textEditar)
                             .addGroup(textDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(inputHoraInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(inputHoraFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(43, Short.MAX_VALUE))
-                    .addGroup(textDataLayout.createSequentialGroup()
-                        .addGroup(textDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(textTipoEvento)
-                            .addComponent(textHoraFInal)
-                            .addComponent(textHoraInicial)
-                            .addComponent(jLabel4)
-                            .addComponent(textNome)
-                            .addGroup(textDataLayout.createSequentialGroup()
-                                .addGap(12, 12, 12)
-                                .addComponent(inputTipoEvento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 185, Short.MAX_VALUE))
+                                .addGroup(textDataLayout.createSequentialGroup()
+                                    .addGroup(textDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(textHoraFInal)
+                                        .addComponent(textHoraInicial)
+                                        .addComponent(jLabel4)
+                                        .addComponent(textNome))
+                                    .addGap(0, 0, Short.MAX_VALUE))
+                                .addGroup(textDataLayout.createSequentialGroup()
+                                    .addGap(12, 12, 12)
+                                    .addGroup(textDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(textTipoEvento1)
+                                        .addComponent(inputTipoEvento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(textDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(textDataLayout.createSequentialGroup()
+                                            .addGap(12, 12, 12)
+                                            .addComponent(inputHoras, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(textTipoEvento)))
+                                .addGroup(textDataLayout.createSequentialGroup()
+                                    .addGap(0, 0, Short.MAX_VALUE)
+                                    .addGroup(textDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(inputHoraInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(inputHoraFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addContainerGap(48, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, textDataLayout.createSequentialGroup()
                         .addComponent(deleteEvent)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(editarEvento)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(saveEvent)
-                        .addGap(21, 21, 21))))
+                        .addGap(15, 15, 15))))
             .addGroup(textDataLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(textDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -240,10 +257,14 @@ public class FormularioEventoView extends javax.swing.JFrame {
                 .addComponent(textHoraFInal)
                 .addGap(17, 17, 17)
                 .addComponent(inputHoraFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(textTipoEvento)
+                .addGap(18, 18, 18)
+                .addGroup(textDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textTipoEvento)
+                    .addComponent(textTipoEvento1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(inputTipoEvento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(textDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(inputTipoEvento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(inputHoras, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addGroup(textDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(deleteEvent)
@@ -284,9 +305,9 @@ public class FormularioEventoView extends javax.swing.JFrame {
                     this.inputTipoEvento.getSelectedItem().toString(), 
                     this.inputData.getText(), 
                     this.inputHoraInicial.getText(), 
-                    this.inputHoraFinal.getText());
+                    this.inputHoraFinal.getText(),
+                    this.inputHoras.getValue().toString());
  
-            //this.buscaAlunoView.buscarAlunos();
             
             JOptionPane.showMessageDialog(rootPane, "Cadastro realizado com sucesso!", "Cadastro Evento", JOptionPane.INFORMATION_MESSAGE);
             
@@ -311,7 +332,33 @@ public class FormularioEventoView extends javax.swing.JFrame {
     }//GEN-LAST:event_deleteEventMouseClicked
 
     private void editarEventoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarEventoMouseClicked
-        // TODO add your handling code here:
+
+        try {
+            
+            EventoControll eventoControl = new EventoControll();
+            
+            eventoControl.editar(this.inputNome.getText(), 
+                    this.inputData.getText(), 
+                    this.inputHoraInicial.getText(), 
+                    this.inputHoraFinal.getText(), 
+                    this.inputTipoEvento.getSelectedItem().toString(),
+                    this.inputHoras.getValue().toString());
+             
+            JOptionPane.showMessageDialog(rootPane, "Edição realizada com sucesso!", "Editar Evento", JOptionPane.INFORMATION_MESSAGE);
+            
+            this.dispose();
+            
+        } catch (ValidacaoException validacaoException) {
+            
+            JOptionPane.showMessageDialog(rootPane, validacaoException.getMessage(), "Editar Evento", JOptionPane.WARNING_MESSAGE);
+        
+        } catch (Exception ex) {
+            
+            JOptionPane.showMessageDialog(rootPane, "Erro ao efetuar a edição!", "Editar Evento", JOptionPane.ERROR_MESSAGE);
+        
+        }
+                
+
     }//GEN-LAST:event_editarEventoMouseClicked
 
     /**
@@ -358,6 +405,7 @@ public class FormularioEventoView extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField inputData;
     private javax.swing.JFormattedTextField inputHoraFinal;
     private javax.swing.JFormattedTextField inputHoraInicial;
+    private javax.swing.JSpinner inputHoras;
     private javax.swing.JTextField inputNome;
     private javax.swing.JTextField inputNome4;
     private javax.swing.JComboBox<String> inputTipoEvento;
@@ -371,5 +419,6 @@ public class FormularioEventoView extends javax.swing.JFrame {
     private javax.swing.JLabel textHoraInicial;
     private javax.swing.JLabel textNome;
     private javax.swing.JLabel textTipoEvento;
+    private javax.swing.JLabel textTipoEvento1;
     // End of variables declaration//GEN-END:variables
 }
