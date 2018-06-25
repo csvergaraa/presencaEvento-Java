@@ -199,7 +199,7 @@ public class FormularioAlunoView extends javax.swing.JFrame {
 
         cancelar.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         cancelar.setForeground(new java.awt.Color(244, 67, 54));
-        cancelar.setText("CANCELAR");
+        cancelar.setText("VOLTAR");
         cancelar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 cancelarMouseClicked(evt);

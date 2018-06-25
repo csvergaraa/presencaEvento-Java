@@ -52,7 +52,6 @@ public class FormularioPresencaView extends javax.swing.JFrame {
         buttonPresenca = new javax.swing.JLabel();
         buttonBuscarEvento = new javax.swing.JLabel();
         textEvento = new javax.swing.JLabel();
-        buttonFinalizar = new javax.swing.JLabel();
         textAluno = new javax.swing.JLabel();
         inputRA = new javax.swing.JRadioButton();
         inputNome = new javax.swing.JRadioButton();
@@ -92,7 +91,7 @@ public class FormularioPresencaView extends javax.swing.JFrame {
 
         buttonVoltar.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         buttonVoltar.setForeground(new java.awt.Color(244, 67, 54));
-        buttonVoltar.setText("CANCELAR");
+        buttonVoltar.setText("VOLTAR");
         buttonVoltar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 buttonVoltarMouseClicked(evt);
@@ -134,15 +133,9 @@ public class FormularioPresencaView extends javax.swing.JFrame {
 
         textEvento.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
         textEvento.setForeground(new java.awt.Color(51, 255, 51));
-        textEvento.setText("Evento 'Palestra do Zezinho' selecionado com sucesso.");
-
-        buttonFinalizar.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        buttonFinalizar.setForeground(new java.awt.Color(3, 218, 198));
-        buttonFinalizar.setText("FINALIZAR");
 
         textAluno.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
         textAluno.setForeground(new java.awt.Color(255, 255, 255));
-        textAluno.setText("Presença do aluno 'Jose Pereira' inserida com sucesso.");
 
         escolhaBusca.add(inputRA);
         inputRA.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
@@ -179,10 +172,7 @@ public class FormularioPresencaView extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(buttonBuscarEvento))
                     .addComponent(textEvento)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(buttonVoltar)
-                        .addGap(179, 179, 179)
-                        .addComponent(buttonFinalizar))
+                    .addComponent(buttonVoltar)
                     .addComponent(jLabel4)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(inputRA)
@@ -207,7 +197,7 @@ public class FormularioPresencaView extends javax.swing.JFrame {
                     .addComponent(buttonBuscarEvento))
                 .addGap(26, 26, 26)
                 .addComponent(textEvento)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -220,9 +210,7 @@ public class FormularioPresencaView extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addComponent(textAluno)
                 .addGap(29, 29, 29)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonVoltar)
-                    .addComponent(buttonFinalizar))
+                .addComponent(buttonVoltar)
                 .addGap(15, 15, 15))
         );
 
@@ -380,7 +368,6 @@ public class FormularioPresencaView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Title;
     private javax.swing.JLabel buttonBuscarEvento;
-    private javax.swing.JLabel buttonFinalizar;
     private javax.swing.JLabel buttonPresenca;
     private javax.swing.JLabel buttonVoltar;
     private javax.swing.ButtonGroup escolhaBusca;

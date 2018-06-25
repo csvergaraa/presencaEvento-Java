@@ -1,5 +1,13 @@
 package view;
 
+import controller.AlunoEventoControll;
+import java.io.IOException;
+import java.sql.SQLException;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
 public class HomeProgramaView extends javax.swing.JFrame {
 
     /**
@@ -34,8 +42,8 @@ public class HomeProgramaView extends javax.swing.JFrame {
         textEditEvento = new javax.swing.JLabel();
         painelSorteio = new javax.swing.JPanel();
         textSorteio = new javax.swing.JLabel();
-        jPanel8 = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
+        painelRelatorio = new javax.swing.JPanel();
+        textRelatorio = new javax.swing.JLabel();
 
         jLabel6.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -243,26 +251,36 @@ public class HomeProgramaView extends javax.swing.JFrame {
                 .addContainerGap(89, Short.MAX_VALUE))
         );
 
-        jPanel8.setBackground(new java.awt.Color(84, 110, 122));
+        painelRelatorio.setBackground(new java.awt.Color(84, 110, 122));
+        painelRelatorio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                painelRelatorioMouseClicked(evt);
+            }
+        });
 
-        jLabel9.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("Gerar Relatório");
+        textRelatorio.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
+        textRelatorio.setForeground(new java.awt.Color(255, 255, 255));
+        textRelatorio.setText("Gerar Relatório");
+        textRelatorio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                textRelatorioMouseClicked(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+        javax.swing.GroupLayout painelRelatorioLayout = new javax.swing.GroupLayout(painelRelatorio);
+        painelRelatorio.setLayout(painelRelatorioLayout);
+        painelRelatorioLayout.setHorizontalGroup(
+            painelRelatorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelRelatorioLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel9)
+                .addComponent(textRelatorio)
                 .addGap(17, 17, 17))
         );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
+        painelRelatorioLayout.setVerticalGroup(
+            painelRelatorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelRelatorioLayout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addComponent(jLabel9)
+                .addComponent(textRelatorio)
                 .addContainerGap(89, Short.MAX_VALUE))
         );
 
@@ -282,7 +300,7 @@ public class HomeProgramaView extends javax.swing.JFrame {
                                     .addComponent(painelEditEvento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(painelEditAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(painelRelatorio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(painelSorteio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -307,7 +325,7 @@ public class HomeProgramaView extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(painelSorteio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(painelRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
@@ -396,6 +414,131 @@ public class HomeProgramaView extends javax.swing.JFrame {
 
     }//GEN-LAST:event_textSorteioMouseClicked
 
+    private void painelRelatorioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_painelRelatorioMouseClicked
+       try {
+
+            int confirmacao = 0;
+            String extensao = "";
+            JFileChooser jFileChooser = new JFileChooser();
+
+            FileNameExtensionFilter filtroTxt = new FileNameExtensionFilter("Documento de texto (*.txt)", "txt");
+            FileNameExtensionFilter filtroDoc = new FileNameExtensionFilter("Documento do word (*.doc)", "txt");
+            FileNameExtensionFilter filtroXls = new FileNameExtensionFilter("Pasta de Trabalho do Excel (*.xls)", "txt");
+            
+            jFileChooser.setFileFilter(filtroDoc);
+            jFileChooser.setFileFilter(filtroXls);
+            jFileChooser.setFileFilter(filtroTxt);
+            
+            int valorRetorno = jFileChooser.showSaveDialog(null);
+
+            if (valorRetorno == JFileChooser.APPROVE_OPTION) {
+
+                if (jFileChooser.getFileFilter().getDescription().equals("Documento de texto (*.txt)")) {
+
+                    extensao = ".txt";
+
+                } else if (jFileChooser.getFileFilter().getDescription().equals("Documento do word (*.doc)")) {
+
+                    extensao = ".doc";
+
+                } else if (jFileChooser.getFileFilter().getDescription().equals("Pasta de Trabalho do Excel (*.xls)")) {
+
+                    extensao = ".xls";
+
+                }
+                
+                String nomeArquivo = jFileChooser.getSelectedFile().getAbsolutePath() + extensao;
+
+                AlunoEventoControll alunoEventoControl = new AlunoEventoControll();
+                boolean arquivoExiste = alunoEventoControl.verificarExistencia(nomeArquivo);
+                if (arquivoExiste) {
+
+                    confirmacao = JOptionPane.showConfirmDialog(null, jFileChooser.getSelectedFile().getName() + " já existe.\nDeseja substituí-lo?", "Confirmar Salvar Arquivo", JOptionPane.YES_NO_OPTION);
+                }
+
+                if (confirmacao == 0) {
+                    alunoEventoControl.gerarRelatorio(nomeArquivo);
+                    JOptionPane.showMessageDialog(null, "Relatório gerado com sucesso!", "Gerar Relatório", JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+
+        } catch (IOException ioe) {
+
+            JOptionPane.showMessageDialog(null, "Erro: " + ioe.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        
+        } catch (SQLException sqle) {
+
+            JOptionPane.showMessageDialog(null, "Erro: " + sqle.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        
+        } catch (Exception ex) {
+
+            JOptionPane.showMessageDialog(null, "Erro: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+
+    }//GEN-LAST:event_painelRelatorioMouseClicked
+
+    private void textRelatorioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textRelatorioMouseClicked
+       try {
+
+            int confirmacao = 0;
+            String extensao = "";
+            JFileChooser jFileChooser = new JFileChooser();
+
+            FileNameExtensionFilter filtroTxt = new FileNameExtensionFilter("Documento de texto (*.txt)", "txt");
+            FileNameExtensionFilter filtroDoc = new FileNameExtensionFilter("Documento do word (*.doc)", "txt");
+            FileNameExtensionFilter filtroXls = new FileNameExtensionFilter("Pasta de Trabalho do Excel (*.xls)", "txt");
+            
+            jFileChooser.setFileFilter(filtroDoc);
+            jFileChooser.setFileFilter(filtroXls);
+            jFileChooser.setFileFilter(filtroTxt);
+            
+            int valorRetorno = jFileChooser.showSaveDialog(null);
+
+            if (valorRetorno == JFileChooser.APPROVE_OPTION) {
+
+                if (jFileChooser.getFileFilter().getDescription().equals("Documento de texto (*.txt)")) {
+
+                    extensao = ".txt";
+
+                } else if (jFileChooser.getFileFilter().getDescription().equals("Documento do word (*.doc)")) {
+
+                    extensao = ".doc";
+
+                } else if (jFileChooser.getFileFilter().getDescription().equals("Pasta de Trabalho do Excel (*.xls)")) {
+
+                    extensao = ".xls";
+
+                }
+                
+                String nomeArquivo = jFileChooser.getSelectedFile().getAbsolutePath() + extensao;
+
+                AlunoEventoControll alunoEventoControl = new AlunoEventoControll();
+                boolean arquivoExiste = alunoEventoControl.verificarExistencia(nomeArquivo);
+                if (arquivoExiste) {
+
+                    confirmacao = JOptionPane.showConfirmDialog(null, jFileChooser.getSelectedFile().getName() + " já existe.\nDeseja substituí-lo?", "Confirmar Salvar Arquivo", JOptionPane.YES_NO_OPTION);
+                }
+
+                if (confirmacao == 0) {
+                    alunoEventoControl.gerarRelatorio(nomeArquivo);
+                    JOptionPane.showMessageDialog(null, "Relatório gerado com sucesso!", "Gerar Relatório", JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+
+        } catch (IOException ioe) {
+
+            JOptionPane.showMessageDialog(null, "Erro: " + ioe.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        
+        } catch (SQLException sqle) {
+
+            JOptionPane.showMessageDialog(null, "Erro: " + sqle.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        
+        } catch (Exception ex) {
+
+            JOptionPane.showMessageDialog(null, "Erro: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        }       
+    }//GEN-LAST:event_textRelatorioMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -439,18 +582,18 @@ public class HomeProgramaView extends javax.swing.JFrame {
     private javax.swing.JPanel inputControle;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel painelCadastroAluno;
     private javax.swing.JPanel painelCadastroEvento;
     private javax.swing.JPanel painelEditAluno;
     private javax.swing.JPanel painelEditEvento;
+    private javax.swing.JPanel painelRelatorio;
     private javax.swing.JPanel painelSorteio;
     private javax.swing.JLabel textCadastroAluno;
     private javax.swing.JLabel textCadastroEvento;
     private javax.swing.JLabel textEditAluno;
     private javax.swing.JLabel textEditEvento;
+    private javax.swing.JLabel textRelatorio;
     private javax.swing.JLabel textSorteio;
     // End of variables declaration//GEN-END:variables
 }

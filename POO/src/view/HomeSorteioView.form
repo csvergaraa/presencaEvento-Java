@@ -118,12 +118,10 @@
                           <Component id="buttonBuscarEvento" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Component id="textAluno" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                          <Component id="buttonVoltar" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="textEvento" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="buttonVoltar" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="textEvento" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="30" max="32767" attributes="0"/>
+                  <EmptySpace pref="74" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -145,9 +143,9 @@
                   <Component id="buttonSorteio" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="textAluno" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                  <EmptySpace pref="52" max="32767" attributes="0"/>
                   <Component id="buttonVoltar" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -172,7 +170,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="36" green="43" red="f4" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="CANCELAR"/>
+            <Property name="text" type="java.lang.String" value="VOLTAR"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="buttonVoltarMouseClicked"/>
@@ -235,7 +233,6 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="ff" red="33" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Evento &apos;Palestra do Zezinho&apos; selecionado com sucesso."/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="textAluno">
@@ -246,7 +243,6 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Aluno &apos;Jose Pereira&apos; sorteado com sucesso."/>
           </Properties>
         </Component>
       </SubComponents>

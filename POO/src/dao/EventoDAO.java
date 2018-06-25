@@ -46,11 +46,10 @@ public class EventoDAO implements CrudDAO{
                 + "', horas = " +eventoVO.getHoras()
                 + " WHERE EVENTO.Nome = '" + eventoVO.getNome() + "';";
 
-        System.out.println(sql);
         Connection con = conexao.conectar();
         Statement sessao = con.createStatement();
 
-        sessao.executeUpdate(sql);
+        sessao.execute(sql);
 
         conexao.desconectar();
     }

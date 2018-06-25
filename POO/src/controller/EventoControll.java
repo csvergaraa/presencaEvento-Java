@@ -17,7 +17,7 @@ public class EventoControll implements CrudControll{
     }
     
     public void cadastrarEvento(String nome, String tipoEvento, String data, String horaInicial, String horaFinal, String horas) throws ClassNotFoundException, SQLException, ValidacaoException{
-        this.validarCampos(nome, tipoEvento, data, horaInicial, horaFinal);
+        this.validarCampos(nome, tipoEvento, data, horaInicial, horaFinal, horas);
 
         EventoVO eventoVO = new EventoVO();
 
@@ -34,7 +34,7 @@ public class EventoControll implements CrudControll{
     
     public void editar(String nome, String data, String horaInicial, String horaFinal, String tipoEvento, String horas) throws ValidacaoException, SQLException, Exception {
 
-        this.validarCampos(nome, tipoEvento, data, horaInicial, horaFinal);
+        this.validarCampos(nome, tipoEvento, data, horaInicial, horaFinal, horas);
 
         EventoVO eventoVO = new EventoVO();
 
@@ -75,7 +75,7 @@ public class EventoControll implements CrudControll{
         return eventoDAO.buscarNome();
     }
  
-    public void validarCampos(String nome, String tipoEvento, String data, String horaInicial, String horaFinal) throws ValidacaoException{
+    public void validarCampos(String nome, String tipoEvento, String data, String horaInicial, String horaFinal, String horas) throws ValidacaoException{
         
         if (nome.equals("")) {
             throw new ValidacaoException(("Campo Nome é obrigatório!"));
@@ -87,6 +87,8 @@ public class EventoControll implements CrudControll{
             throw new ValidacaoException("Campo Hora Inicial é obrigatório!");
         } else if (horaFinal.equals("")){
             throw new ValidacaoException("Campo Hora Final é obrigatório");
+        } else if (Integer.parseInt(horas) <= 0){
+            throw new ValidacaoException("Campo horas deve ser maior que Zero!");
         }
     }
 

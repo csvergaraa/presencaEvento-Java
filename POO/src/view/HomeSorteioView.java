@@ -86,7 +86,7 @@ public class HomeSorteioView extends javax.swing.JFrame {
 
         buttonVoltar.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         buttonVoltar.setForeground(new java.awt.Color(244, 67, 54));
-        buttonVoltar.setText("CANCELAR");
+        buttonVoltar.setText("VOLTAR");
         buttonVoltar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 buttonVoltarMouseClicked(evt);
@@ -120,11 +120,9 @@ public class HomeSorteioView extends javax.swing.JFrame {
 
         textEvento.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
         textEvento.setForeground(new java.awt.Color(51, 255, 51));
-        textEvento.setText("Evento 'Palestra do Zezinho' selecionado com sucesso.");
 
         textAluno.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
         textAluno.setForeground(new java.awt.Color(255, 255, 255));
-        textAluno.setText("Aluno 'Jose Pereira' sorteado com sucesso.");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -141,10 +139,9 @@ public class HomeSorteioView extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(buttonBuscarEvento))
                     .addComponent(textAluno)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(buttonVoltar, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(textEvento, javax.swing.GroupLayout.Alignment.LEADING)))
-                .addContainerGap(30, Short.MAX_VALUE))
+                    .addComponent(buttonVoltar)
+                    .addComponent(textEvento))
+                .addContainerGap(74, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,9 +160,9 @@ public class HomeSorteioView extends javax.swing.JFrame {
                 .addComponent(buttonSorteio)
                 .addGap(18, 18, 18)
                 .addComponent(textAluno)
-                .addGap(27, 27, 27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                 .addComponent(buttonVoltar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

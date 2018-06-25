@@ -106,7 +106,7 @@ public class FormularioEventoView extends javax.swing.JFrame {
 
         deleteEvent.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         deleteEvent.setForeground(new java.awt.Color(244, 67, 54));
-        deleteEvent.setText("CANCELAR");
+        deleteEvent.setText("VOLTAR");
         deleteEvent.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 deleteEventMouseClicked(evt);
