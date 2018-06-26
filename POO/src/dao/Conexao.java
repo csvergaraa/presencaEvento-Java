@@ -17,7 +17,7 @@ public class Conexao {
         driver = "com.mysql.jdbc.Driver";
         url = "jdbc:mysql://localhost:3306/POO";
         usuario = "root";
-        senha = "1234";
+        senha = "";
     }
 
     public Connection conectar() throws ClassNotFoundException, SQLException {
